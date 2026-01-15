@@ -1,6 +1,6 @@
 {
   "site": {
-    "title": "Bigspring Light Astro",
+    "title": "Hecaton Light Astro",
     "base_url": "https://bigspring-light-astro.vercel.app",
     "base_path": "/",
     "trailing_slash": false,

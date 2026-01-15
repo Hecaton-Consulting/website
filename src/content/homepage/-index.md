@@ -83,7 +83,7 @@ services:
       link: /contact
 workflow:
   title: Technical Toolkit
-  image: media/public/images/tooling.png
+  image: /images/tooling.png
   description: ''
 call_to_action:
   title: Ready to get started?
