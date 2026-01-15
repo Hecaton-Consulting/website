@@ -10,33 +10,47 @@ banner:
     label: Contact Us
     link: /contact
 feature:
-  title: Something You Need To Know
+  title: What do we do?
   features:
-    - name: Strategic Architecture
+    - name: Cloud Clean-up & Rescue
       icon: /images/code.svg
       content: >-
-        Align your stack with the AWS Well-Architected Framework for security
-        and reliability.
-    - name: Object Oriented
+        Velocity has come at the cost of chaos to your infra? We specialize in
+        stepping into existing setups, documenting the chaos, and turning it
+        into a well-oiled machine.
+    - name: CI/CD
       icon: /images/oop.svg
-      content: Lorem ipsum dolor sit amet consectetur adipisicing elit quam nihil
-    - name: 24h Service
+      content: >-
+        Is your "plumbing" in place? We can help you design your pipelines from
+        scratch or improve upon the existing ones to reduce developer friction. 
+    - name: Observability
       icon: /images/user-clock.svg
-      content: Lorem ipsum dolor sit amet consectetur adipisicing elit quam nihil
-    - name: Value for Money
+      content: >-
+        Stop guessing what's broken! We can help you set up observability and
+        alerting so you can know exactly what is going on in your code and
+        infrastructure at a glance.
+    - name: Security Without the Stress
       icon: /images/love.svg
-      content: Lorem ipsum dolor sit amet consectetur adipisicing elit quam nihil
-    - name: Faster Response
+      content: >-
+        We get you audit-ready (SOC 2 and beyond) by auditing your cloud
+        environments, locking down your IAM, automating backups, and writing the
+        documentation you’ve been procrastinating on.
+    - name: Infrastructure as Code (IaaC)
       icon: /images/speedometer.svg
-      content: Lorem ipsum dolor sit amet consectetur adipisicing elit quam nihil
-    - name: Cloud Support
-      icon: /images/cloud.svg
-      content: Lorem ipsum dolor sit amet consectetur adipisicing elit quam nihil
+      content: >-
+        No more ClickOps. We orchestrate everything with Terraform so your
+        entire environment is version-controlled and repeatable.
+    - name: Lock down your costs
+      icon: ''
+      content: >-
+        We can give you the FinOps special, auditing your costs and providing
+        actionable strategies to avoid unpleasant surprises with your monthly
+        Cloud bill.
 services:
-  - title: FinOps
+  - title: No Hand-Holding Required
     content: >-
-      We identify opportunities for optimization and employ the best Cost
-      Control strategies.
+      You don’t need to manage us. We’re results-oriented problem solvers who
+      get things done.
     images:
       - /images/service-slide-1.png
       - /images/service-slide-2.png
@@ -45,35 +59,20 @@ services:
       enable: true
       label: Check it out
       link: /contact
-  - title: Strategic Architecture
+  - title: Enterprise DNA, Startup Speed
     content: >-
-      We align your stack with the AWS Well-Architected Framework to make sure
-      your infrastructure is secure and scalable.
+      We have worked in both multinational corporations and lean startups. We
+      learnt the best of both worlds and can adapt to your speed.
     images:
       - /images/service-slide-1.png
     button:
       enable: true
       label: Check it out
       link: /contact
-  - title: Infrastructure as Code
+  - title: Fractional = Flexible
     content: >-
-      We use Terraform to ensure your infrastructure is auditable and to reduce
-      infrastructure friction in your team.
-    images:
-      - /images/service-slide-1.png
-      - /images/service-slide-2.png
-      - /images/service-slide-3.png
-    button:
-      enable: true
-      label: Check it out
-      link: /contact
-  - title: A company standing different from others
-    content: >-
-      Lorem ipsum dolor sit amet, consectetur adipiscing elit. Consequat
-      tristique eget amet, tempus eu at consecttur. Leo facilisi nunc viverra
-      tellus. Ac laoreet sit vel consquat. consectetur adipiscing elit.
-      Consequat tristique eget amet, tempus eu at consecttur. Leo facilisi nunc
-      viverra tellus. Ac laoreet sit vel consquat.
+      Hire us for the high-level strategy or to go down into the trenches and
+      execute. We scale our involvement based on your roadmap.
     images:
       - /images/service-slide-1.png
       - /images/service-slide-2.png
@@ -83,8 +82,8 @@ services:
       label: Check it out
       link: /contact
 workflow:
-  title: Experience the best workflow with us
-  image: /images/banner.png
+  title: Technical Toolkit
+  image: media/public/images/tooling.png
   description: ''
 call_to_action:
   title: Ready to get started?
