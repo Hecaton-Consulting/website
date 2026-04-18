@@ -55,7 +55,7 @@ The accent-lime is the "playful/bold" payload. Everything else is disciplined, s
 - **Body:** Inter, weights 400–500.
 - **Technical flourishes:** JetBrains Mono — section labels (`> platform/rescue`), metric-strip decorators, monospace diagnostic lines.
 
-Self-hosted via `astro-font` (no Google Fonts request; better perf + privacy).
+Self-hosted via **Astro 5's native Fonts API** (downloads the font files to `_astro/fonts/` at build time — no Google Fonts CDN request at runtime). `astro-font` is *not* used; its self-hosting requires per-source `fetch: true` config and is superseded on Astro 5.14 by the native integration. Fonts are OFL/Apache licensed — no attribution needed in HTML; the build keeps license files alongside the font binaries.
 
 ### Scale & rhythm
 - Hero headline: `clamp(3rem, 8vw, 6rem)` with tight leading (`0.95–1.0`).
@@ -66,8 +66,8 @@ Self-hosted via `astro-font` (no Google Fonts request; better perf + privacy).
 ### Motion
 - On-scroll fade-up with small stagger for card grids.
 - Hover: lime underline grows from left on links; cards lift 2px; buttons invert to accent background.
-- Hero "wow": blinking `_` cursor after the tagline, or an accent-lime line drawing in under "last.".
-- `prefers-reduced-motion` respected — transforms and non-essential animations disabled.
+- Hero "wow": blinking `_` cursor after the tagline (single canonical choice — implemented by `CursorBlink.astro`).
+- `prefers-reduced-motion` respected — transforms and non-essential animations disabled; the cursor blink also stops.
 
 ### Imagery
 - No stock illustrations. No swiper carousels.
@@ -108,12 +108,12 @@ Narrative: **hook → proof → offer → trust → ask**.
 
 **Proof strip (career metrics, framed honestly)**
 - Heading (monospace): `─── SELECTED OUTCOMES FROM A DECADE OF PLATFORM WORK ───`
-- Inline metric blocks:
-  - `52% AWS bill cut` — scale-up hospitality SaaS
-  - `95% fewer outages` — mid-market SaaS
-  - `SOC 2 + NF 525` — compliance delivered
-  - `70+ AWS accounts` — centralised observability
-  - `40% CI/CD savings` — pipeline refactor
+- Inline metric blocks. **Canonical attribution format (used here and on `/about` track record):** `{metric} — as {role} at {anonymised employer shape}`. Examples:
+  - `52% AWS bill cut` — as SRE at a hospitality-tech Series B
+  - `95% fewer outages` — as Senior DevOps at a mid-market SaaS
+  - `SOC 2 + NF 525` — compliance delivered across two engagements
+  - `70+ AWS accounts` — centralised observability as Senior Platform Engineer at a global BPO
+  - `40% CI/CD spend cut` — pipeline refactor at the same BPO
 - Small disclaimer line: *"Drawn from a decade of platform work across employed roles — see About for full context."*
 
 **What we do (engagement teasers)**
@@ -181,22 +181,22 @@ Intro paragraph (1–2 sentences on how Hecaton engages). Capacity honesty line:
 - H1 + portrait + first-person intro paragraph (2–3 sentences).
 - Credentials strip (monospace): `Senior Platform Engineer · 10+ years · C2 English · native Spanish · proficient Italian · remote, based in Spain`
 - **How I got here** — condensed career narrative in prose (not a CV list). Three paragraphs covering the arc: system admin roots → DevOps at ClickDimensions → platform engineering at Eva Global and Amenitiz. Keep employer names consistent with public LinkedIn.
-- **Track record** — five to six metric blocks, each with an honest "as [role] at [anonymised employer shape]" attribution. These are Jaime's career wins, explicitly not Hecaton's.
+- **Track record** — five to six metric blocks using the canonical attribution format defined in §6.1 (`{metric} — as {role} at {anonymised employer shape}`). These are Jaime's career wins, explicitly not Hecaton's.
 - **How I work** — short manifesto, five to seven bullet points. Opinionated: documentation-first, no hand-holding, outcome-over-output, IaC always, FinOps baked in, etc.
-- **Writing** — link-outs to LinkedIn / Medium / personal writing if any. If none, the section is hidden on launch; re-enabled when content exists.
+- **Writing** — link-outs to LinkedIn / Medium / personal writing if any. **Hide rule:** if the `writing_links` array in the About collection entry is empty, the section is not rendered.
 - Final CTA.
 
 ### 6.4 `/contact`
 
 - H1: *"Let's talk about your platform."*
 - Sub: *"30-minute intro call, no pitch deck. Bring the mess."*
-- **Primary:** Cal.com inline embed (iframe widget). If the visitor prefers their own client, a plain link below: *"Or pick a time: cal.com/hecaton"*.
-- **Fallback form** (below the fold): Web3Forms POST to `https://api.web3forms.com/submit`. Fields:
+- **Primary:** Cal.com inline embed (iframe widget). Canonical event URL: `https://cal.com/hecaton/intro`. If the visitor prefers their own client, a plain link below: *"Or pick a time: cal.com/hecaton/intro"*.
+- **Fallback form** (below the fold): submits via **native HTML `<form method="POST" enctype="application/x-www-form-urlencoded">`** to `https://api.web3forms.com/submit`. **No JS, no `fetch()`, no JSON body** — this avoids the CORS issue Web3Forms documents for JSON submissions and lets the `redirect` field work as a native 302. Fields:
   - Name (required)
   - Email (required)
   - Company (optional)
   - What's broken? (textarea, required)
-  - Hidden: `access_key`, `redirect=https://hecaton.tech/contact/thanks`, honeypot `botcheck`.
+  - Hidden: `access_key`, `redirect=https://hecaton.tech/contact/thanks`, honeypot `botcheck` (must stay empty — Web3Forms treats a filled honeypot as spam).
 - Last-resort contact line: `jaime@hecaton.tech`.
 - No phone number on the public site.
 
@@ -209,7 +209,7 @@ Intro paragraph (1–2 sentences on how Hecaton engages). Capacity honesty line:
 
 ### 6.6 `/privacy`, `/terms`
 
-Retained from template, rewritten for Hecaton. Minimal: what data the contact form collects (name, email, company, message), where it goes (Web3Forms → email), analytics disclosure (Umami Cloud, no cookies), no third-party ad networks.
+Retained from template, rewritten for Hecaton. Authored as MDX files in the `pages` content collection (same pattern the template already uses; rendered through the existing `[regular].astro` dynamic route). Minimal content: what data the contact form collects (name, email, company, message), where it goes (Web3Forms → email at `jaime@hecaton.tech`), analytics disclosure (Umami Cloud, no cookies), no third-party ad networks.
 
 ### 6.7 `404`
 
@@ -220,41 +220,90 @@ Retained, restyled in the new palette. Line: *"This page doesn't exist. Unlike y
 ### 7.1 Stack
 
 **Kept from template:**
-- Astro 5, Tailwind 4, React 19, MDX
+- Astro 5, Tailwind 4, MDX
 - Astro content collections
-- `astro-auto-import` for MDX shortcodes
 - `@astrojs/sitemap` for sitemap.xml
-- `astro-font` for self-hosted fonts
 
-**Removed:**
+**Removed (lean stack):**
+- `@astrojs/react` + `react` + `react-dom` — no interactive islands planned at launch
+- `astro-auto-import` — no MDX shortcodes in the new design
+- `astro-font` — superseded by Astro 5 native Fonts API
 - `astro-swiper` (no more carousels)
-- `@digi4care/astro-google-tagmanager` (no GTM)
+- `@digi4care/astro-google-tagmanager` (no GTM; Umami Cloud handles analytics)
+- `@justinribeiro/lite-youtube` (no video)
+- `remark-collapse`, `remark-toc` (blog-only plugins)
 - Sitepins CMS config and `.sitepins/` directory
 - `netlify.toml` (not deploying to Netlify)
 
 **Added:**
-- None. No new dependencies beyond what's already installed.
+- None. Native Astro 5 Fonts API replaces `astro-font`; no new npm dependencies.
+
+**Net effect:** smaller dependency graph, faster installs, fewer deprecation risks. If a future requirement brings back React islands or MDX shortcodes, those integrations can be re-added in one PR.
 
 ### 7.2 Content collections (`src/content.config.ts`)
 
-- **Keep:** `homepage`, `contact`, `pages` (for privacy/terms/404)
-- **Replace `pricing` →** `engagements`:
-  ```ts
-  engagements: [{
-    slug: string,
-    title: string,
-    premise: string,
-    best_for: string,
-    scope: string[],
-    duration: string,
-    outcome: string,
-    cta: { label: string, link: string }
-  }]
-  faqs: [{ question: string, answer: string }]
-  capacity_note: string
-  ```
-- **Remove:** `blog`, `faq`, `pricing` collections entirely.
-- **Add:** `about` collection — intro, credentials strip, career narrative (MDX body), track-record items (list of `{metric, context}`), how-I-work list, writing links.
+**Keep** — `homepage`, `contact`, `pages` (for privacy/terms as MDX).
+
+**Remove** — `blog`, `faq`, `pricing` collections entirely.
+
+**Replace `pricing` with `engagements`** — a single-entry collection backing the `/engagements` page. The entry contains an array of engagement shapes, a FAQ list, and a capacity note. Zod schema:
+
+```ts
+const engagementsCollection = defineCollection({
+  loader: glob({ pattern: "**/-*.{md,mdx}", base: "src/content/engagements" }),
+  schema: z.object({
+    title: z.string(),
+    description: z.string().optional(),
+    intro: z.string(),
+    capacity_note: z.string(),
+    shapes: z.array(z.object({
+      slug: z.string(),                         // e.g. "platform/audit"
+      title: z.string(),                        // e.g. "Platform Audit & Roadmap"
+      premise: z.string(),                      // one-sentence hook
+      best_for: z.string(),                     // one line
+      scope: z.array(z.string()),               // bulleted deliverables
+      duration: z.string(),                     // e.g. "3–4 weeks calendar, 40–60 hours of work"
+      outcome: z.string(),                      // one line
+      cta: z.object({
+        label: z.string().default("Book a call"),
+        link: z.string().default("/contact"),
+      }),
+    })),
+    faqs: z.array(z.object({
+      question: z.string(),
+      answer: z.string(),
+    })),
+  }),
+});
+```
+
+**Add `about` collection** — single-entry collection backing the `/about` page. Zod schema:
+
+```ts
+const aboutCollection = defineCollection({
+  loader: glob({ pattern: "**/-*.{md,mdx}", base: "src/content/about" }),
+  schema: z.object({
+    title: z.string(),
+    description: z.string().optional(),
+    portrait: z.string(),                       // image path
+    intro: z.string(),                          // first-person paragraph
+    credentials_strip: z.array(z.string()),     // monospace pipe-separated chips
+    career_narrative: z.array(z.string()),      // paragraphs of prose
+    track_record: z.array(z.object({
+      metric: z.string(),                       // e.g. "52% AWS bill cut"
+      role: z.string(),                         // e.g. "SRE"
+      employer_shape: z.string(),               // e.g. "hospitality-tech Series B"
+    })),
+    how_i_work: z.array(z.string()),            // manifesto bullets
+    writing_links: z.array(z.object({
+      label: z.string(),
+      url: z.string(),
+    })).default([]),                            // empty array hides the section (§6.3)
+  }),
+});
+```
+
+**Homepage schema** also needs updating to drop the obsolete `services`, `workflow`, and the six-item `feature.features` shape, and add a typed `proof_strip`, `engagement_teasers`, and `about_teaser` field matching §6.1.
 
 ### 7.3 Components
 
@@ -290,7 +339,7 @@ Retained, restyled in the new palette. Line: *"This page doesn't exist. Unlike y
     "title": "Hecaton",
     "base_url": "https://hecaton.tech",
     "base_path": "/",
-    "trailing_slash": false,
+    "trailing_slash": true,
     "favicon": "/favicon.png",
     "logo_text": "Hecaton"
   },
@@ -326,26 +375,29 @@ Retained, restyled in the new palette. Line: *"This page doesn't exist. Unlike y
 
 ### 8.1 Cal.com (booking)
 
-- Create a Cal.com account and set up a 30-minute "Intro call — Hecaton" event type.
-- Event URL: `cal.com/hecaton/intro` (or similar).
-- Embed on `/contact` using Cal.com's inline widget (`<!-- Cal inline widget -->` script).
-- Link also used on hero, final CTA, and `/contact/thanks`.
-- Free tier is sufficient.
+- Create a Cal.com account (free tier is sufficient). Organisation slug: `hecaton`. Event slug: `intro`. **Canonical event URL: `https://cal.com/hecaton/intro`.** Used here and on every CTA across the site; no "or similar".
+- 30-minute "Intro call — Hecaton" event type.
+- Embed on `/contact` using Cal.com's **inline embed**, script URL `https://app.cal.com/embed/embed.js` (note: `app.cal.com`, not `cal.com`). The embed injects an iframe and uses `postMessage` for auto-resize.
+- `CalEmbed.astro` must give the container an explicit `min-height` (`min-h-[700px]`) to prevent layout collapse before the iframe reports its size.
+- Link (not embed) also used on hero, final CTA, `/contact/thanks`.
+- **CSP note:** GitHub Pages does not set a Content-Security-Policy header and we are not adding one via `<meta http-equiv>`. If a CSP is added later, it must allow `script-src https://app.cal.com`, `frame-src https://app.cal.com https://cal.com`.
 
 ### 8.2 Web3Forms (fallback form)
 
 - Register at `web3forms.com` with `jaime@hecaton.tech` — receive an access key by email.
-- Access key embedded in `ContactForm.astro` as a hidden `<input>`. **Not secret** — it's client-side; Web3Forms uses it only to route submissions to the registered inbox. Safe to commit.
-- Form posts to `https://api.web3forms.com/submit`.
-- Hidden fields include `redirect=https://hecaton.tech/contact/thanks` and `botcheck` honeypot.
+- Access key embedded in `ContactForm.astro` as a hidden `<input name="access_key">`. **Not secret** — it's client-side; Web3Forms uses it only to route submissions to the registered inbox. Safe to commit.
+- **Submission mechanism (pinned):** native HTML form POST with `enctype="application/x-www-form-urlencoded"`, **no JavaScript, no `fetch`, no JSON body**. Web3Forms then returns a 302 redirect to the URL in the hidden `redirect` field — the browser follows naturally to `/contact/thanks`. This path avoids the CORS issue Web3Forms documents for JSON submissions.
+- Hidden fields: `access_key`, `redirect=https://hecaton.tech/contact/thanks`, `botcheck` (honeypot, must stay empty).
 - Free tier (250 submissions/month) is far more than this site will ever need.
+- **CSP note:** if a CSP is ever added, allow `form-action https://api.web3forms.com`.
 
 ### 8.3 Umami Cloud (analytics)
 
 - Sign up at `cloud.umami.is`, add `hecaton.tech` as a site, receive a website ID.
-- Insert `<script defer src="https://cloud.umami.is/script.js" data-website-id="..."></script>` in `Base.astro` `<head>`.
+- Insert `<script defer src="https://cloud.umami.is/script.js" data-website-id="..."></script>` in `Base.astro` `<head>`. (Current URL and attribute name verified against Umami's 2025/2026 docs.)
 - Free tier (10k events/month) is plenty.
 - No cookies, GDPR-friendly. Privacy page mentions it.
+- **CSP note:** if a CSP is ever added, allow `script-src https://cloud.umami.is` and `connect-src https://cloud.umami.is`.
 
 ## 9. Deployment — GitHub Pages
 
@@ -355,10 +407,14 @@ Retained, restyled in the new palette. Line: *"This page doesn't exist. Unlike y
 
 ### 9.2 Repository setup
 
-1. Push the repo to GitHub (existing remote is fine if Hecaton-owned; otherwise create a new repo under the Hecaton GitHub account and push).
-2. In repo **Settings → Pages**: set source to **GitHub Actions**.
-3. In **Settings → Pages → Custom domain**: enter `hecaton.tech`. GitHub will create a `CNAME` file in the repo root; we preempt this by including `public/CNAME` with the single line `hecaton.tech`.
-4. Enable **Enforce HTTPS** once the TLS certificate provisions (takes a few minutes after DNS propagates).
+**Ownership model:** the repo lives under a Hecaton GitHub organisation (referred to below as `<hecaton-org>` — exact slug to be decided at setup time; Jaime has a free org account). Jaime commits as the personal user `jbaldodiego`; the org owns the repository and the Pages deployment. The `www` CNAME target is therefore `<hecaton-org>.github.io`.
+
+1. Create the repository inside the Hecaton org. Name: `hecaton-site` (suggested; any slug works).
+2. Push the local repo to the new remote on branch `main`.
+3. In repo **Settings → Pages**: set source to **GitHub Actions**.
+4. In **Settings → Pages → Custom domain**: enter `hecaton.tech`. GitHub writes/updates a `CNAME` file on the Pages branch, but we pre-empt this by committing `public/CNAME` (single line: `hecaton.tech`) so every Actions-driven deploy keeps the custom-domain binding — without it, a re-deploy can silently clear the custom-domain setting.
+5. After DNS has propagated (see §9.3), wait for GitHub to provision a Let's Encrypt certificate. **"Enforce HTTPS" stays greyed out until the cert is issued** — expected wait is 15 minutes to 24 hours. If it gets stuck past 24h, toggle the custom-domain field off and back on in **Settings → Pages** to retry provisioning.
+6. Enable **Enforce HTTPS**.
 
 ### 9.3 DNS
 
@@ -373,27 +429,38 @@ At your registrar for `hecaton.tech`:
   - `2606:50c0:8001::153`
   - `2606:50c0:8002::153`
   - `2606:50c0:8003::153`
-- `CNAME www.hecaton.tech → <github-username>.github.io`
+- `CNAME www.hecaton.tech → <hecaton-org>.github.io` (fill in the org slug chosen in §9.2 step 1)
 
 Verify with `dig hecaton.tech +short` after propagation.
 
 ### 9.4 GitHub Actions workflow (`.github/workflows/deploy.yml`)
 
-Triggers on push to `main`. Steps:
+Triggers on push to `main`. Two jobs: `build` and `deploy`. Build job steps:
 1. `actions/checkout@v4`
 2. `actions/setup-node@v4` (Node 20, cache `npm`)
 3. `npm ci`
 4. `npm run build`
-5. `actions/upload-pages-artifact@v3` with `path: ./dist`
-6. `actions/deploy-pages@v4`
+5. `actions/upload-pages-artifact@v4` with `path: ./dist`
 
-Job permissions:
+Deploy job uses `actions/deploy-pages@v4` and has `needs: build`.
+
+**Action versions pinned at v4 for both artifact and deploy actions.** `actions/upload-pages-artifact@v3` was deprecated on 30 January 2025 and now fails; `@v4` is required.
+
+Top-level permissions:
 ```yaml
 permissions:
   contents: read
   pages: write
   id-token: write
 ```
+
+**Concurrency (required):**
+```yaml
+concurrency:
+  group: "pages"
+  cancel-in-progress: false
+```
+Without this block, overlapping pushes to `main` cause `deploy-pages` to race and the second one fails with "another deployment is already in progress." Matches GitHub's own Pages-starter template.
 
 ### 9.5 Repository secrets
 
@@ -412,8 +479,9 @@ If at some point we add a service that requires a true secret (e.g. an analytics
 
 - `site: "https://hecaton.tech"`
 - `base: "/"` (apex domain, no subpath)
-- `trailingSlash: "never"`
-- Integrations stay the same minus the GTM one.
+- **`trailingSlash: "always"`** and **`build: { format: "directory" }`** — GitHub Pages serves extension-less URLs by 301-redirecting to the directory form. Emitting each page as `dist/engagements/index.html` (directory format) with `trailingSlash: "always"` eliminates redirect round-trips on every internal link. All internal `<a href>` URLs across the site must therefore end with a `/`.
+- Integrations list drops: `@astrojs/react`, `astro-auto-import`, GTM. Keeps: `@astrojs/sitemap`, `@astrojs/mdx`, Tailwind Vite plugin, sharp image service.
+- Adds: Astro 5 native Fonts API config for Space Grotesk, Inter, JetBrains Mono (all from Google Fonts upstream, downloaded to `_astro/fonts/` at build).
 
 ## 10. Accessibility & performance
 
@@ -423,7 +491,8 @@ If at some point we add a service that requires a true secret (e.g. an analytics
 - `prefers-reduced-motion` disables non-essential animation.
 - Lighthouse targets: Performance ≥ 95, Accessibility ≥ 95, Best Practices ≥ 95, SEO ≥ 95.
 - Images served via Astro's `<Image>` component (sharp), responsive `srcset`.
-- Fonts preloaded via `astro-font`.
+- Fonts self-hosted and preloaded via Astro 5's native Fonts API.
+- All internal links end with `/` to match `trailingSlash: "always"` and avoid a GitHub-Pages-level 301 on every click.
 
 ## 11. Out of scope for launch
 
@@ -433,8 +502,10 @@ If at some point we add a service that requires a true secret (e.g. an analytics
 - Multi-language versions (English only; ES/IT mentioned on About as working languages)
 - Newsletter / email capture
 - Dark/light mode toggle (dark only at launch)
-- Server-side forms (happy path is fully client-side)
+- Self-hosted / SSR form endpoints (Web3Forms is third-party but handles the whole submit flow; no Astro server routes)
 - A/B testing or experimentation
+- Content-Security-Policy headers (noted where relevant, but not implemented at launch)
+- React islands (stack is being trimmed — see §7.1)
 
 ## 12. Open questions / future work
 
@@ -442,3 +513,5 @@ If at some point we add a service that requires a true secret (e.g. an analytics
 - Hecaton wordmark / logo — can launch with a typeset wordmark in Space Grotesk Bold; commission or iterate on a mark later.
 - Case studies page (`/work`) to be added once Hecaton has closed engagements with client permission to write them up.
 - Portrait photo for `/about` — needed from Jaime at implementation time.
+- **GitHub org slug for `<hecaton-org>`** — chosen at setup time (§9.2 step 1); determines the `www` CNAME target.
+- **Cal.com organisation slug** — assumed `hecaton`; confirm it's available at signup (§8.1).
