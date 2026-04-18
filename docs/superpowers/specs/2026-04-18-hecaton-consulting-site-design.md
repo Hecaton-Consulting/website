@@ -407,9 +407,9 @@ const aboutCollection = defineCollection({
 
 ### 9.2 Repository setup
 
-**Ownership model:** the repo lives under a Hecaton GitHub organisation (referred to below as `<hecaton-org>` — exact slug to be decided at setup time; Jaime has a free org account). Jaime commits as the personal user `jbaldodiego`; the org owns the repository and the Pages deployment. The `www` CNAME target is therefore `<hecaton-org>.github.io`.
+**Ownership model:** the repo lives under the GitHub organisation `Hecaton-Consulting`. Full remote: `git@github.com:Hecaton-Consulting/website.git`. Jaime commits as the personal user `jbaldodiego`; the org owns the repository and the Pages deployment. The `www` CNAME target is therefore `hecaton-consulting.github.io` (GitHub normalises the org slug to lowercase for the Pages subdomain).
 
-1. Create the repository inside the Hecaton org. Name: `hecaton-site` (suggested; any slug works).
+1. Create the `website` repository inside `Hecaton-Consulting` on GitHub (already reserved as the remote URL locally).
 2. Push the local repo to the new remote on branch `main`.
 3. In repo **Settings → Pages**: set source to **GitHub Actions**.
 4. In **Settings → Pages → Custom domain**: enter `hecaton.tech`. GitHub writes/updates a `CNAME` file on the Pages branch, but we pre-empt this by committing `public/CNAME` (single line: `hecaton.tech`) so every Actions-driven deploy keeps the custom-domain binding — without it, a re-deploy can silently clear the custom-domain setting.
@@ -429,7 +429,7 @@ At your registrar for `hecaton.tech`:
   - `2606:50c0:8001::153`
   - `2606:50c0:8002::153`
   - `2606:50c0:8003::153`
-- `CNAME www.hecaton.tech → <hecaton-org>.github.io` (fill in the org slug chosen in §9.2 step 1)
+- `CNAME www.hecaton.tech → hecaton-consulting.github.io`
 
 Verify with `dig hecaton.tech +short` after propagation.
 
@@ -513,5 +513,4 @@ If at some point we add a service that requires a true secret (e.g. an analytics
 - Hecaton wordmark / logo — can launch with a typeset wordmark in Space Grotesk Bold; commission or iterate on a mark later.
 - Case studies page (`/work`) to be added once Hecaton has closed engagements with client permission to write them up.
 - Portrait photo for `/about` — needed from Jaime at implementation time.
-- **GitHub org slug for `<hecaton-org>`** — chosen at setup time (§9.2 step 1); determines the `www` CNAME target.
 - **Cal.com organisation slug** — assumed `hecaton`; confirm it's available at signup (§8.1).
