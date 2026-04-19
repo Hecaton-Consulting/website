@@ -1,0 +1,28 @@
+---
+import Base from "@/layouts/Base.astro";
+import config from "@/config/config.json";
+
+const calEventUrl = config.cal_com.event_url;
+---
+
+<Base
+  title="Thanks"
+  description="Message received — I'll get back to you within one business day."
+  noindex
+>
+  <section class="section pt-32 md:pt-40">
+    <div class="container max-w-2xl!">
+      <h1>Thanks — message received.</h1>
+      <p class="mt-6 text-lg text-text">
+        I'll get back to you within one business day. In the meantime, if you'd
+        rather just pick a time, here's my calendar.
+      </p>
+      <div class="mt-10 flex flex-wrap gap-4">
+        <a href={calEventUrl} class="btn btn-primary" target="_blank" rel="noopener noreferrer">
+          Book a call <span aria-hidden="true">→</span>
+        </a>
+        <a href="/" class="btn btn-outline">Back to home</a>
+      </div>
+    </div>
+  </section>
+</Base>
