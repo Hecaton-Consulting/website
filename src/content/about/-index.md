@@ -1,0 +1,48 @@
+---
+title: "About Jaime"
+description: "Hecaton is run by Jaime Baldó, a Senior Platform Engineer with a decade of infra work across startups and global teams."
+portrait: "/images/jaime-portrait.jpg"
+intro: "I'm Jaime. I run Hecaton because I kept meeting teams who shipped product brilliantly and then drowned in their own infra. Hecaton is the studio I would have hired, five roles ago."
+credentials_strip:
+  - "Senior Platform Engineer"
+  - "10+ years"
+  - "C2 English"
+  - "native Spanish"
+  - "proficient Italian"
+  - "remote, based in Spain"
+career_narrative:
+  - "I started in system administration — the unglamorous work of keeping other people's code running. That's where I learnt the habits that still show up in everything I build: document the system, automate the boring, own the outage."
+  - "I moved into DevOps at ClickDimensions, then platform engineering at Eva Global and Amenitiz — a mix of mid-market SaaS, hospitality tech, and a global BPO. Terraform estates, multi-account AWS, SOC 2 and NF 525 compliance, observability rollouts, cost cuts that actually stuck. Different stacks, same underlying work: take the chaos, give it shape."
+  - "I launched Hecaton because fractional work is honest work. Part-time, principal-led, no pretend team. If a client needs me, they get me. If they don't, I'm not upselling them a retainer."
+track_record:
+  - metric: "52% AWS bill cut"
+    role: "SRE"
+    employer_shape: "hospitality-tech Series B"
+  - metric: "95% fewer outages"
+    role: "Senior DevOps"
+    employer_shape: "mid-market SaaS"
+  - metric: "SOC 2 + NF 525"
+    role: "Platform Engineer"
+    employer_shape: "two separate engagements"
+  - metric: "70+ AWS accounts"
+    role: "Senior Platform Engineer"
+    employer_shape: "global BPO"
+  - metric: "40% CI/CD spend cut"
+    role: "Senior Platform Engineer"
+    employer_shape: "same global BPO"
+  - metric: "3 incident-free launches"
+    role: "SRE"
+    employer_shape: "hospitality-tech Series B"
+how_i_work:
+  - "Document the system on the way in — every engagement leaves behind runbooks a new hire can read on day one."
+  - "Infrastructure-as-code, always. If it only lives in a cloud console it doesn't exist."
+  - "Outcome over output: fewer tickets closed, more problems that stop recurring."
+  - "FinOps baked in, not bolted on — cost conversations happen while decisions are reversible."
+  - "Opinionated but not dogmatic — I'll argue my case, then commit to your team's decision."
+  - "No hand-holding. I manage my own work. You don't need to chase me for status."
+writing_links: []
+final_cta:
+  heading: "Let's see if we're a fit."
+  button_label: "Book a 30-min call"
+  button_link: "/contact/"
+---
