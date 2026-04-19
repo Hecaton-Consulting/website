@@ -37,18 +37,15 @@ Notes:
 
 ---
 
-## Phase 1 — Foundation 🚧 IN PROGRESS
+## Phase 1 — Foundation ✅ DONE
 
-### 1.1 config.json — ✅ DONE (`be210fe`)
-### 1.2 theme.json — ✅ DONE (`77c22f9`)
-### 1.4 menu.json — ✅ DONE (`66d957d`)
-### 1.5 social.json — ✅ DONE (`86f303a`)
-
-Re-dispatched after token-limit break. Second dispatch (id `a0ae80528539c389a`) landed all four.
-
-### 1.3 astro.config.mjs Fonts API — 🚧 IN PROGRESS (dispatching next)
-### 1.6 Base.astro — 🚧 IN PROGRESS (dispatching next)
-### 1.7 CSS overhaul — 🚧 IN PROGRESS (dispatching next)
+- 1.1 config.json — `be210fe`
+- 1.2 theme.json — `77c22f9`
+- 1.4 menu.json — `66d957d`
+- 1.5 social.json — `86f303a`
+- 1.3 astro.config.mjs Fonts API — `7ee275e`
+- 1.6 Base.astro rewrite — `ff6c4b1`
+- 1.7 CSS overhaul — `7220637`
 
 ---
 
