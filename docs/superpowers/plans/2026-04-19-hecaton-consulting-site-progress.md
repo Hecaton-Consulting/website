@@ -60,7 +60,14 @@ Notes:
 ## Phase 3 — Components ✅ DONE
 
 All 14 components landed. See commits `40eb59c` through `89e0b87` on the branch.
-## Phase 4 — Pages ⏸ NOT STARTED
+## Phase 4 — Pages ✅ DONE
+
+All 8 pages render; `npm run build` is green. Commits `b2e50f9`…`b518bd3`.
+
+Deviations:
+- `<Image>` swapped for `<img>` on index/about for portrait (public-path strings don't work with Astro `<Image>`; broken-glyph acceptable until Phase 6 drops the file).
+- `[regular].astro` rewritten to use Astro 5 glob-loader API (`.id` instead of `.slug`).
+- Fixed pre-existing Tailwind v4 issues: `decoration-primary` / `outline-primary` → `[var(--color-primary)]` arbitrary value form in `base.css` + `navigation.css`.
 ## Phase 5 — Deploy (CNAME + Actions) ⏸ NOT STARTED
 ## Phase 6 — Services runbook ⏸ NOT STARTED
 ## Phase 7 — QA ⏸ NOT STARTED
