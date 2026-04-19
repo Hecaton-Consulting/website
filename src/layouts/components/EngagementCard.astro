@@ -1,0 +1,80 @@
+---
+import MonoLabel from "@/components/MonoLabel.astro";
+
+export interface EngagementShape {
+  slug: string;
+  title: string;
+  premise: string;
+  best_for?: string;
+  scope?: string[];
+  duration?: string;
+  outcome?: string;
+  cta: {
+    label: string;
+    link: string;
+  };
+}
+
+export interface Props {
+  shape: EngagementShape;
+  compact?: boolean;
+}
+
+const { shape, compact = false } = Astro.props;
+---
+
+<article class="engagement-card flex flex-col gap-6">
+  <div class="flex flex-col gap-3">
+    <MonoLabel label={shape.slug} />
+    <h3 class="text-2xl md:text-3xl font-primary font-semibold text-text-dark">
+      {shape.title}
+    </h3>
+    <p class="text-text">{shape.premise}</p>
+  </div>
+
+  {
+    !compact && shape.best_for && (
+      <div>
+        <p class="mono-label mb-2">best_for</p>
+        <p class="text-text">{shape.best_for}</p>
+      </div>
+    )
+  }
+
+  {
+    !compact && shape.scope && shape.scope.length > 0 && (
+      <div>
+        <p class="mono-label mb-2">scope</p>
+        <ul class="flex flex-col gap-2 text-text">
+          {shape.scope.map((item) => (
+            <li class="pl-4 border-l border-border">{item}</li>
+          ))}
+        </ul>
+      </div>
+    )
+  }
+
+  {
+    !compact && shape.duration && (
+      <div>
+        <p class="mono-label mb-2">duration</p>
+        <p class="text-text">{shape.duration}</p>
+      </div>
+    )
+  }
+
+  {
+    !compact && shape.outcome && (
+      <div>
+        <p class="mono-label mb-2">outcome</p>
+        <p class="text-text">{shape.outcome}</p>
+      </div>
+    )
+  }
+
+  <div class="mt-auto">
+    <a href={shape.cta.link} class="btn btn-primary">
+      {shape.cta.label} <span aria-hidden="true">→</span>
+    </a>
+  </div>
+</article>
