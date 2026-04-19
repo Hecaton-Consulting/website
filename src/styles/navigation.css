@@ -15,5 +15,5 @@
 }
 
 .nav-link-active {
-  @apply text-text-dark underline decoration-primary underline-offset-4;
+  @apply text-text-dark underline decoration-[var(--color-primary)] underline-offset-4;
 }
