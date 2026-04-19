@@ -2,7 +2,7 @@
 
 Live status tracker for the implementation plan at `docs/superpowers/plans/2026-04-19-hecaton-consulting-site.md`. Updated as work completes. Persists across token-limit session breaks.
 
-**Last updated:** 2026-04-19
+**Last updated:** 2026-04-19 (post config+theme batch)
 
 ---
 
@@ -39,16 +39,16 @@ Notes:
 
 ## Phase 1 — Foundation 🚧 IN PROGRESS
 
-### 1.1 config.json — ⏳ dispatched (hit token limit mid-dispatch)
-### 1.2 theme.json — ⏳ dispatched
-### 1.4 menu.json — ⏳ dispatched
-### 1.5 social.json — ⏳ dispatched
+### 1.1 config.json — ✅ DONE (`be210fe`)
+### 1.2 theme.json — ✅ DONE (`77c22f9`)
+### 1.4 menu.json — ✅ DONE (`66d957d`)
+### 1.5 social.json — ✅ DONE (`86f303a`)
 
-All four JSON-rewrite tasks were dispatched to one subagent (id `aec0d7e82511dc7c6`). Token limit hit before the subagent produced any tool calls — **assume none of these four tasks completed**. Re-dispatch from clean state next session.
+Re-dispatched after token-limit break. Second dispatch (id `a0ae80528539c389a`) landed all four.
 
-### 1.3 astro.config.mjs Fonts API — ⏸ not started
-### 1.6 Base.astro — ⏸ not started
-### 1.7 CSS overhaul — ⏸ not started
+### 1.3 astro.config.mjs Fonts API — 🚧 IN PROGRESS (dispatching next)
+### 1.6 Base.astro — 🚧 IN PROGRESS (dispatching next)
+### 1.7 CSS overhaul — 🚧 IN PROGRESS (dispatching next)
 
 ---
 
