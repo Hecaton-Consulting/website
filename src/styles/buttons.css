@@ -1,25 +1,21 @@
 .btn {
-  @apply inline-block font-primary font-bold border px-7 py-[17px] leading-[18px] transition;
+  @apply inline-flex items-center gap-2 font-primary font-semibold border px-6 py-3 leading-none transition-all;
 }
 
 .btn-primary {
-  @apply bg-primary text-white border-transparent z-[1]  rounded-[30px] relative hover:shadow-[0_12px_24px_-6px_rgba(45,67,121,.1)] transition-all capitalize;
-
-  &:after {
-    @apply w-full h-full rounded-[30px] absolute left-1/2 top-1/2 translate-x-[-50%]  translate-y-[-50%] content-[''] bg-primary transition-all duration-300 ease-in-out -z-[1];
-  }
-  &:hover::after {
-    @apply w-[110%] h-[110%];
-  }
+  @apply bg-primary text-body border-primary;
 }
 
-.btn-outline-primary {
-  @apply relative text-text border-0 bg-transparent rounded-[30px] hover:border-transparent hover:text-primary;
+.btn-primary:hover,
+.btn-primary:focus-visible {
+  @apply bg-transparent text-primary;
+}
 
-  &:after {
-    @apply w-full h-full rounded-[30px] absolute left-1/2 top-1/2 translate-x-[-50%]  translate-y-[-50%] content-[''] bg-transparent border border-primary transition-all duration-300 ease-in-out z-[0];
-  }
-  &:hover::after {
-    @apply w-[110%] h-[110%];
-  }
+.btn-outline {
+  @apply bg-transparent text-text-dark border-border;
+}
+
+.btn-outline:hover,
+.btn-outline:focus-visible {
+  @apply border-primary text-primary;
 }
