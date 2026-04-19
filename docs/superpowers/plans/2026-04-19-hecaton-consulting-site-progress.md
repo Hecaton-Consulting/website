@@ -57,7 +57,9 @@ Notes:
 - 2.4 about content — `f1773fe`
 - 2.5 contact content — `6725fa5`
 - 2.6 privacy + terms — `992ee0e`
-## Phase 3 — Components ⏸ NOT STARTED
+## Phase 3 — Components ✅ DONE
+
+All 14 components landed. See commits `40eb59c` through `89e0b87` on the branch.
 ## Phase 4 — Pages ⏸ NOT STARTED
 ## Phase 5 — Deploy (CNAME + Actions) ⏸ NOT STARTED
 ## Phase 6 — Services runbook ⏸ NOT STARTED
