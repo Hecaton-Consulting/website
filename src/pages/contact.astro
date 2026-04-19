@@ -1,78 +1,50 @@
 ---
-import config from "@/config/config.json";
 import Base from "@/layouts/Base.astro";
-import { markdownify } from "@/lib/utils/textConverter";
-import type { CollectionEntry } from "astro:content";
+import CalEmbed from "@/components/CalEmbed.astro";
+import ContactForm from "@/components/ContactForm.astro";
 import { getEntry } from "astro:content";
 
-const entry = (await getEntry(
-  "contact",
-  "-index"
-)) as CollectionEntry<"contact">;
-const { contact_form_action } = config.params;
-const { title, description, info } = entry.data;
+const entry = await getEntry("contact", "-index");
+if (!entry) throw new Error("contact/-index.md content entry not found");
+
+const {
+  title,
+  description,
+  heading,
+  sub,
+  cal_event_url,
+  cal_link_label,
+  form_heading,
+  form_intro,
+  email_line,
+} = entry.data;
 ---
 
 <Base title={title} description={description}>
-  <section class="section">
+  <section class="section pt-32 md:pt-40">
     <div class="container">
-      <h1 class="text-center font-normal" set:html={markdownify(title)} />
-      <div class="section row pb-0">
-        <div class="col-12 md:col-6 lg:col-7">
-          <form class="contact-form" method="POST" action={contact_form_action}>
-            <div class="mb-3">
-              <input
-                class="form-input w-full rounded"
-                name="name"
-                type="text"
-                placeholder="Name"
-                required
-              />
-            </div>
-            <div class="mb-3">
-              <input
-                class="form-input w-full rounded"
-                name="email"
-                type="email"
-                placeholder="Your email"
-                required
-              />
-            </div>
-            <div class="mb-3">
-              <input
-                class="form-input w-full rounded"
-                name="subject"
-                type="text"
-                placeholder="Subject"
-                required
-              />
-            </div>
-            <div class="mb-3">
-              <textarea
-                class="form-textarea w-full rounded-md"
-                rows="5"
-                placeholder="Your message"></textarea>
-            </div>
-            <button type="submit" class="btn btn-primary"> Send Now</button>
-          </form>
-        </div>
-        <div class="content col-12 md:col-6 lg:col-5">
-          <h4 set:html={markdownify(info?.title)} />
-          <p class="mt-4" set:html={markdownify(info?.description)} />
-          <ul class="contact-list mt-5 list-none pl-0">
-            {
-              info?.contacts?.map((contact) => (
-                <li>
-                  <strong
-                    class="text-text-dark"
-                    set:html={markdownify(contact)}
-                  />
-                </li>
-              ))
-            }
-          </ul>
-        </div>
-      </div>
+      <h1>{heading}</h1>
+      <p class="mt-6 max-w-2xl text-lg text-text">{sub}</p>
+    </div>
+  </section>
+
+  <section class="pb-16">
+    <div class="container">
+      <CalEmbed calLink={cal_event_url} />
+      <p class="mt-4 text-sm text-text">
+        <a href={cal_event_url} target="_blank" rel="noopener noreferrer" class="text-primary">
+          {cal_link_label}
+        </a>
+      </p>
+    </div>
+  </section>
+
+  <section class="section border-t border-border">
+    <div class="container max-w-2xl!">
+      <h2 class="mb-2">{form_heading}</h2>
+      <p class="mb-8 text-text">{form_intro}</p>
+      <ContactForm />
+      <p class="mt-10 text-sm text-text">{email_line}</p>
     </div>
   </section>
 </Base>
