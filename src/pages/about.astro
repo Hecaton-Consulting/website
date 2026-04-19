@@ -1,0 +1,119 @@
+---
+import Base from "@/layouts/Base.astro";
+import TrackRecordItem from "@/components/TrackRecordItem.astro";
+import CtaBlock from "@/components/CtaBlock.astro";
+import MonoLabel from "@/components/MonoLabel.astro";
+import { getEntry } from "astro:content";
+
+const entry = await getEntry("about", "-index");
+if (!entry) throw new Error("about/-index.md content entry not found");
+
+const {
+  title,
+  description,
+  portrait,
+  intro,
+  credentials_strip,
+  career_narrative,
+  track_record,
+  how_i_work,
+  writing_links,
+  final_cta,
+} = entry.data;
+---
+
+<Base title={title} description={description}>
+  <section class="section pt-32 md:pt-40">
+    <div class="container">
+      <div class="grid grid-cols-1 gap-10 md:grid-cols-[1fr_2fr] md:gap-16 items-start">
+        <div>
+          <img
+            src={portrait}
+            alt="Portrait of Jaime Baldó"
+            width={480}
+            height={600}
+            class="border border-border"
+            loading="lazy"
+          />
+        </div>
+        <div>
+          <h1>About Jaime</h1>
+          <p class="mt-6 text-lg text-text">{intro}</p>
+          <div class="mt-8">
+            <MonoLabel label={credentials_strip.join(" · ")} />
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container max-w-3xl!">
+      <h2 class="mb-8">How I got here</h2>
+      <div class="flex flex-col gap-6 text-text">
+        {career_narrative.map((p) => <p>{p}</p>)}
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <h2 class="mb-4">Track record</h2>
+      <p class="mb-10 max-w-2xl text-text">
+        Outcomes from a decade of platform work across employed roles — anonymised by employer shape, named by my role at the time.
+      </p>
+      <ul class="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3">
+        {
+          track_record.map((item) => (
+            <TrackRecordItem
+              metric={item.metric}
+              role={item.role}
+              employer_shape={item.employer_shape}
+            />
+          ))
+        }
+      </ul>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container max-w-3xl!">
+      <h2 class="mb-8">How I work</h2>
+      <ul class="flex flex-col gap-4 text-text">
+        {how_i_work.map((item) => (
+          <li class="pl-4 border-l border-border">{item}</li>
+        ))}
+      </ul>
+    </div>
+  </section>
+
+  {
+    writing_links.length > 0 && (
+      <section class="section">
+        <div class="container max-w-3xl!">
+          <h2 class="mb-8">Writing</h2>
+          <ul class="flex flex-col gap-3">
+            {writing_links.map((link) => (
+              <li>
+                <a
+                  href={link.url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="text-text-dark hover:text-primary"
+                >
+                  {link.label} <span aria-hidden="true">→</span>
+                </a>
+              </li>
+            ))}
+          </ul>
+        </div>
+      </section>
+    )
+  }
+
+  <CtaBlock
+    heading={final_cta.heading}
+    button_label={final_cta.button_label}
+    button_link={final_cta.button_link}
+  />
+</Base>
