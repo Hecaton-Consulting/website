@@ -68,7 +68,11 @@ Deviations:
 - `<Image>` swapped for `<img>` on index/about for portrait (public-path strings don't work with Astro `<Image>`; broken-glyph acceptable until Phase 6 drops the file).
 - `[regular].astro` rewritten to use Astro 5 glob-loader API (`.id` instead of `.slug`).
 - Fixed pre-existing Tailwind v4 issues: `decoration-primary` / `outline-primary` → `[var(--color-primary)]` arbitrary value form in `base.css` + `navigation.css`.
-## Phase 5 — Deploy (CNAME + Actions) ⏸ NOT STARTED
+## Phase 5 — Deploy (CNAME + Actions) 🚧 IN PROGRESS
+
+- 5.1 CNAME — ✅ `7333e69`
+- 5.2 deploy.yml — ✅ `719fe7d`
+- 5.3 push + PR — ⏸ deferred, awaiting user approval
 ## Phase 6 — Services runbook ⏸ NOT STARTED
 ## Phase 7 — QA ⏸ NOT STARTED
 
