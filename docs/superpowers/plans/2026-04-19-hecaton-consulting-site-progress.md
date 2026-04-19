@@ -73,7 +73,9 @@ Deviations:
 - 5.1 CNAME — ✅ `7333e69`
 - 5.2 deploy.yml — ✅ `719fe7d`
 - 5.3 push + PR — ⏸ deferred, awaiting user approval
-## Phase 6 — Services runbook ⏸ NOT STARTED
+## Phase 6 — Services runbook ✅ DONE
+
+- 6.1 `docs/services-setup.md` — `a1ab23a`
 ## Phase 7 — QA ⏸ NOT STARTED
 
 ---
