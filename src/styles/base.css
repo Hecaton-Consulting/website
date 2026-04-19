@@ -62,7 +62,7 @@ a {
 
 a:hover,
 a:focus-visible {
-  @apply decoration-primary text-text-dark;
+  @apply decoration-[var(--color-primary)] text-text-dark;
 }
 
 b,
@@ -82,7 +82,7 @@ code {
 }
 
 *:focus-visible {
-  @apply outline-2 outline-offset-2 outline-primary;
+  @apply outline-2 outline-offset-2 outline-[var(--color-primary)];
 }
 
 @media (prefers-reduced-motion: reduce) {
