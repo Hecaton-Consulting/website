@@ -49,7 +49,14 @@ Notes:
 
 ---
 
-## Phase 2 — Content collections ⏸ NOT STARTED
+## Phase 2 — Content collections ✅ DONE
+
+- 2.1 content.config.ts — `f188ff7`
+- 2.2 homepage content — `9b69c25`
+- 2.3 engagements content — `508c270`
+- 2.4 about content — `f1773fe`
+- 2.5 contact content — `6725fa5`
+- 2.6 privacy + terms — `992ee0e`
 ## Phase 3 — Components ⏸ NOT STARTED
 ## Phase 4 — Pages ⏸ NOT STARTED
 ## Phase 5 — Deploy (CNAME + Actions) ⏸ NOT STARTED
