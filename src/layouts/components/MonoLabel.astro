@@ -1,0 +1,10 @@
+---
+export interface Props {
+  label: string;
+  class?: string;
+}
+
+const { label, class: className = "" } = Astro.props;
+---
+
+<span class={`mono-label ${className}`}>&gt; {label}</span>
