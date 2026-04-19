@@ -1,0 +1,70 @@
+---
+import config from "@/config/config.json";
+
+export interface Props {
+  calLink?: string;
+  minHeight?: string;
+}
+
+const { calLink = config.cal_com.event_url, minHeight = "700px" } = Astro.props;
+
+const calSlug = calLink.replace(/^https?:\/\/cal\.com\//, "");
+---
+
+<div
+  id="cal-inline"
+  class="w-full border border-border bg-light"
+  style={`min-height: ${minHeight};`}
+  data-cal-link={calSlug}
+>
+</div>
+
+<script is:inline define:vars={{ embedSrc: config.cal_com.embed_script, calSlug }}>
+  (function (C, A, L) {
+    let p = function (a, ar) {
+      a.q.push(ar);
+    };
+    let d = C.document;
+    C.Cal =
+      C.Cal ||
+      function () {
+        let cal = C.Cal;
+        let ar = arguments;
+        if (!cal.loaded) {
+          cal.ns = {};
+          cal.q = cal.q || [];
+          d.head.appendChild(d.createElement("script")).src = A;
+          cal.loaded = true;
+        }
+        if (ar[0] === L) {
+          const api = function () {
+            p(api, arguments);
+          };
+          const namespace = ar[1];
+          api.q = api.q || [];
+          if (typeof namespace === "string") {
+            cal.ns[namespace] = cal.ns[namespace] || api;
+            p(cal.ns[namespace], ar);
+            p(cal, ["initNamespace", namespace]);
+          } else {
+            p(cal, ar);
+          }
+          return;
+        }
+        p(cal, ar);
+      };
+  })(window, embedSrc, "init");
+
+  Cal("init", "intro", { origin: "https://cal.com" });
+  Cal.ns.intro("inline", {
+    elementOrSelector: "#cal-inline",
+    calLink: calSlug,
+    layout: "month_view",
+  });
+  Cal.ns.intro("ui", {
+    theme: "dark",
+    cssVarsPerTheme: { dark: { "cal-brand": "#CCFF66" } },
+    hideEventTypeDetails: false,
+    layout: "month_view",
+  });
+</script>
