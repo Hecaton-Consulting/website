@@ -2,17 +2,18 @@
 import Base from "@/layouts/Base.astro";
 ---
 
-<Base title="Page Not Found">
-  <section class="section">
-    <div class="container">
-      <div class="flex h-[40vh] items-center justify-center">
-        <div class="text-center">
-          <h1 class="h2 md:h1 mb-4">Error 404</h1>
-          <div class="content">
-            <p>Page Not Found</p>
-          </div>
-          <a href="/" class="btn btn-primary mt-8">Back to home</a>
-        </div>
+<Base title="Not found" description="Page not found" noindex>
+  <section class="section pt-32 md:pt-40">
+    <div class="container max-w-2xl!">
+      <p class="mono-label">error/404</p>
+      <h1 class="mt-4">This page doesn't exist. Unlike your AWS bill.</h1>
+      <p class="mt-8 text-lg text-text">
+        The link might be wrong, the page may have moved, or I broke something.
+        Head home and we'll start over.
+      </p>
+      <div class="mt-10 flex flex-wrap gap-4">
+        <a href="/" class="btn btn-primary">Back to home</a>
+        <a href="/contact/" class="btn btn-outline">Contact</a>
       </div>
     </div>
   </section>
