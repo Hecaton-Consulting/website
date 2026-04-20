@@ -72,7 +72,7 @@ Deviations:
 
 - 5.1 CNAME — ✅ `7333e69`
 - 5.2 deploy.yml — ✅ `719fe7d`
-- 5.3 push + PR — ⏸ deferred, awaiting user approval
+- 5.3 push + PR — ✅ PR #1 https://github.com/Hecaton-Consulting/website/pull/1 (bootstrapped remote main; default branch now `main`)
 ## Phase 6 — Services runbook ✅ DONE
 
 - 6.1 `docs/services-setup.md` — `a1ab23a`
