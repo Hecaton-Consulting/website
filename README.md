@@ -1,124 +1,57 @@
-<h1 align=center>Bigspring Light Astro</h1>
-<p align=center>Bigspring is a highly customizable Astro theme designed specifically for SaaS & marketing websites.  
-</p>
-<h2 align="center"> <a target="_blank" href="https://tf-bigspring-light-astro.vercel.app/" rel="nofollow">👀Demo</a> | <a  target="_blank" href="https://pagespeed.web.dev/report?url=https%3A%2F%2Fbigspring-light-astro.vercel.app%2F&form_factor=desktop">Page Speed (100%)🚀</a>
-</h2>
+# hecaton.tech
 
-<p align=center>
-  <a href="https://github.com/withastro/astro/releases/tag/astro%405.14.1" alt="Contributors">
-    <img src="https://img.shields.io/static/v1?label=ASTRO&message=5.14&color=000&logo=astro" />
-  </a>
+Marketing site for **Hecaton Consulting** — a fractional platform-engineering studio. Built with Astro and Tailwind, deployed to GitHub Pages.
 
-  <a href="https://github.com/themefisher/bigspring-light-astro/blob/main/LICENSE">
-    <img src="https://img.shields.io/github/license/themefisher/bigspring-light-astro" alt="license"></a>
+🔗 **Live:** [hecaton.tech](https://hecaton.tech)
 
-  <img src="https://img.shields.io/github/languages/code-size/themefisher/bigspring-light-astro" alt="code size">
+## Stack
 
-  <a href="https://github.com/themefisher/bigspring-light-astro/graphs/contributors">
-    <img src="https://img.shields.io/github/contributors/themefisher/bigspring-light-astro" alt="contributors"></a>
-</p>
+- **[Astro 5](https://astro.build)** — static site generator
+- **[Tailwind CSS 4](https://tailwindcss.com)** (via `@tailwindcss/vite`)
+- **MDX** content collections for page copy
+- **GitHub Pages** hosting via GitHub Actions
 
-![bigspring-light](https://assets.teamosis.com/thumbs/bigspring-light.png)
+## Local development
 
-Bigspring is a beautifully designed & highly customizable Astro theme created specifically for SaaS & marketing websites. Users can customize the color scheme, fonts, menu, social links, etc. and update the content easily based on their requirements. Bigspring is the perfect theme for showcasing your SaaS products or services and connecting with customers.
+Requires Node.js 22 (LTS).
 
-## 🔑Key Features
-
-- 📄 10+ Pre-Designed Pages
-- ✨ Highly Customizable (Color, Font, Menu, Social Links, SEO Meta Tags, etc.)
-- ⚡ Fast by Default (95+ Google PageSpeed Score)
-- ⚙️ Netlify Settings Pre-configured
-- 📬 Contact Form Support
-- 💰 Pricing Table
-- 🌅 Support OG Image
-- ✍️ Write and Update Content in Markdown / MDX
-- 📚 MDX Components Auto Import
-- 📝 Includes Draft Pages and Posts
-- 🚀 Built with Tailwind CSS Framework
-- 📱 Fully Responsive on Desktops, Tablets, and Smartphones
-- 🔍 SEO Friendly
-
-## 📄 10+ Pre-Designed Pages
-
-- 🏠 Home Page
-- 📚 Blog Page
-- 📝 Blog Single Page
-- 💰 Pricing Page
-- 📞 Contact
-- ❓ FAQ Page
-- 🎨 Elements Page
-- 🔒 Privacy Policy
-- 📜 Terms & Conditions
-- 🚧 404 Page
-<!-- installation -->
-
-## ⚙️Installation
-
-After downloading the template, you have some prerequisites to install. Then you can run it on your localhost. You can view the package.json file to see which scripts are included.
-
-### 🔧Install prerequisites (once for a machine)
-
-- **Node Installation:** [Install node js](https://nodejs.org/en/download/) [Recommended LTS version]
-
-### 🖥️Local setup
-
-After successfully installing those dependencies, open this template with any IDE [[VS Code](https://code.visualstudio.com/) recommended], and then open the internal terminal of IDM [vs code shortcut <code>ctrl/cmd+\`</code>]
-
-- 👉Install dependencies
-
-```
-npm install
+```bash
+npm install      # install dependencies
+npm run dev      # start the dev server at http://localhost:4321
+npm run build    # production build to ./dist
+npm run preview  # preview the production build locally
+npm run check    # astro type-check
+npm run format   # format with Prettier
 ```
 
-- 👉Run locally
+## Project structure
 
 ```
-npm run dev
+src/
+├── config/         # site config + theme (config.json, theme.json, menu.json, social.json)
+├── content/        # page copy as Markdown content collections (homepage, about, engagements, contact, pages)
+├── layouts/        # Base layout, components, and partials
+├── pages/          # route files (index, about, engagements, contact, [regular], 404)
+└── styles/         # global CSS
+public/             # static assets, CNAME, robots.txt
 ```
 
-After that, it will open up a preview of the template in your default browser, watch for changes to source files, and live-reload the browser when changes are saved.
+Most visible text lives in `src/content/**/*.md`, not in the `.astro` files — edit copy there.
 
-## 🔨Production Build
+## Configuration
 
-After finishing all the customization, you can create a production build by running this command.
+Site settings and third-party integrations are in `src/config/config.json`:
 
-```
-npm run build
-```
+- **Booking** — `cal_com.event_url` embeds the [Cal.com EU](https://cal.eu) booking widget.
+- **Contact form** — `web3forms.access_key` powers the [Web3Forms](https://web3forms.com) contact form.
+- **Analytics** — `umami.website_id` enables [Umami Cloud](https://umami.is) (cookieless, EU region).
 
-<!-- edit with sitepins -->
+These identifiers are **public by design** (embedded client-side in the page HTML) and are safe to commit — there are no secrets in this repository.
 
-## 📝 Edit Content with CMS
+## Deployment
 
-This template comes pre-configured with [**Sitepins**](https://sitepins.com), a Git-based Headless CMS designed for seamless content management. You can update your website’s text, images, and configuration without touching a single line of code.
+Pushing to `main` triggers `.github/workflows/deploy.yml`, which builds the site and publishes it to GitHub Pages. The custom domain is bound via `public/CNAME` (`hecaton.tech`).
 
-**How to get started:**
+## License & attribution
 
-Click the Edit with Sitepins button below and follow the on-screen instructions to start editing your content visually.
-
-  <a target="_blank" href="https://app.sitepins.com/new/clone?name=Bigspring%20Light%20Astro&repository=https://github.com/themefisher/bigspring-light-astro">
-    <img src="https://sitepins.com/button.svg" alt="Edit with Sitepins">
-  </a>
-
-<!-- reporting issue -->
-
-## 🐞Reporting Issues
-
-We use GitHub Issues as the official bug tracker for this Template. Please Search [existing issues](https://github.com/themefisher/bigspring-light-astro/issues). It’s possible someone has already reported the same problem.
-If your problem or idea has not been addressed yet, feel free to [open a new issue](https://github.com/themefisher/bigspring-light-astro/issues).
-
-<!-- licence -->
-
-## 📄License
-
-Copyright (c) 2016 - Present, Designed & Developed by [Themefisher](https://themefisher.com)
-
-👉**Code License:** Released under the [MIT](https://github.com/themefisher/bigspring-light-astro/blob/main/LICENSE) license.
-
-👉**Image license:** The images are only for demonstration purposes. They have their license, we don't have permission to share those images.
-
-## 👨‍💻Need Custom Development Services?
-
-Besides developing beautifully designed and blazing-fast themes, we help businesses create fast, performance-focused, scalable & secure websites based on NextJs, Hugo, Astro, etc.
-
-If you need a custom theme, theme customization, or complete website development services from scratch you can [Hire Us](https://themefisher.com/contact).
+Site design and copy © Hecaton. The code is based on the open-source [Bigspring Light Astro](https://github.com/themefisher/bigspring-light-astro) template by Themefisher, released under the [MIT](./LICENSE) license, with substantial rework.
