@@ -31,11 +31,11 @@ The `/contact/` page embeds **Cal.com's EU service (cal.eu)** so you can book a 
 
 ## Analytics
 
-The site uses **Umami Cloud** for basic, privacy-friendly analytics. Umami does not set cookies, does not use any personal identifier, and does not cross-reference visitors across sites — it only produces aggregate counts such as page views and rough referrer. The legal basis is my legitimate interest in understanding how the site is used (Art. 6(1)(f)); because no cookies or personal identifiers are involved, no consent banner is required. See [umami.is/privacy](https://umami.is/privacy).
+The site uses **Umami Cloud** (EU region) for basic, privacy-friendly analytics. Umami does not set cookies, does not use any personal identifier, and does not cross-reference visitors across sites — it only produces aggregate counts such as page views and rough referrer, stored on **EU servers**. The legal basis is my legitimate interest in understanding how the site is used (Art. 6(1)(f)); because no cookies or personal identifiers are involved, no consent banner is required. See [umami.is/privacy](https://umami.is/privacy).
 
 ## International transfers
 
-Some of the services above process data outside the European Economic Area (EEA) — notably **Web3Forms, in the United States**. Where personal data is transferred outside the EEA, it relies on the appropriate safeguards under Chapter V of the GDPR, such as the European Commission's Standard Contractual Clauses or an adequacy decision, as set out in that provider's own privacy policy. Booking data handled through Cal.eu stays within the EU.
+Booking (Cal.eu) and analytics (Umami Cloud, EU region) keep data within the European Union. One service processes data outside the European Economic Area (EEA): the contact form is handled by **Web3Forms, in the United States**. Where personal data is transferred outside the EEA, it relies on the appropriate safeguards under Chapter V of the GDPR, such as the European Commission's Standard Contractual Clauses or an adequacy decision, as set out in that provider's own privacy policy.
 
 ## Your rights
 
