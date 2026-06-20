@@ -1,0 +1,14 @@
+---
+export interface Props {
+  metric: string;
+  role: string;
+  employer_shape: string;
+}
+
+const { metric, role, employer_shape } = Astro.props;
+---
+
+<li class="flex flex-col gap-1 border-l border-border pl-4">
+  <span class="metric-number text-2xl md:text-3xl">{metric}</span>
+  <span class="text-sm text-text">as {role} at {employer_shape}</span>
+</li>

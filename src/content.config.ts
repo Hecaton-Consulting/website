@@ -1,179 +1,154 @@
 import { glob } from "astro/loaders";
 import { defineCollection, z } from "astro:content";
 
-// Homepage collection schema
 const homepageCollection = defineCollection({
   loader: glob({ pattern: "**/-*.{md,mdx}", base: "src/content/homepage" }),
   schema: z.object({
-    banner: z
-      .object({
-        title: z.string().optional(),
-        content: z.string().optional(),
-        image: z.string().optional(),
-        button: z
-          .object({
-            label: z.string(),
-            link: z.string().default("/contact"),
-            enable: z.boolean().default(true),
-          })
-          .optional(),
-      })
-      .optional(),
-    feature: z.object({
-      title: z.string(),
-      features: z.array(
+    banner: z.object({
+      tagline: z.string(),
+      subhead: z.string(),
+      primary_cta: z.object({
+        label: z.string(),
+        link: z.string(),
+      }),
+      secondary_cta: z.object({
+        label: z.string(),
+        link: z.string(),
+      }),
+    }),
+    proof_strip: z.object({
+      heading: z.string(),
+      disclaimer: z.string(),
+      metrics: z.array(
         z.object({
-          name: z.string(),
-          icon: z.string().optional(),
-          content: z.string().optional(),
+          metric: z.string(),
+          context: z.string(),
         }),
       ),
     }),
-    services: z
-      .array(
+    engagement_teasers: z.object({
+      heading: z.string(),
+      intro: z.string().optional(),
+      shapes: z.array(
         z.object({
-          title: z.string().optional(),
-          content: z.string().optional(),
-          images: z.array(z.string()).optional(),
-          button: z
-            .object({
-              label: z.string(),
-              link: z.string().default("/contact"),
-              enable: z.boolean().default(true),
-            })
-            .optional(),
+          slug: z.string(),
+          title: z.string(),
+          premise: z.string(),
+          link: z.string().default("/engagements/"),
         }),
-      )
-      .optional(),
-    workflow: z
-      .object({
-        title: z.string().optional(),
-        description: z.string().optional(),
-        image: z.string(),
-      })
-      .optional(),
-    call_to_action: z
-      .object({
-        title: z.string().optional(),
-        content: z.string().optional(),
-        image: z.string(),
-        button: z
-          .object({
-            label: z.string(),
-            link: z.string().default("/contact"),
-            enable: z.boolean().default(true),
-          })
-          .optional(),
-      })
-      .optional(),
-  }),
-});
-
-//Contact collection schema
-const contactCollection = defineCollection({
-  loader: glob({ pattern: "**/-*.{md,mdx}", base: "src/content/contact" }),
-  schema: z.object({
-    title: z.string(),
-    description: z.string(),
-    draft: z.boolean(),
-    info: z.object({
-      title: z.string(),
-      description: z.string(),
-      contacts: z.array(z.string()),
+      ),
+    }),
+    about_teaser: z.object({
+      heading: z.string(),
+      intro: z.string(),
+      portrait: z.string(),
+      credentials: z.array(z.string()),
+      principal_line: z.string(),
+      cta_label: z.string().default("More about Jaime"),
+      cta_link: z.string().default("/about/"),
+    }),
+    final_cta: z.object({
+      heading: z.string(),
+      sub: z.string(),
+      button_label: z.string(),
+      button_link: z.string(),
     }),
   }),
 });
 
-//pricing collection schema
-const pricingCollection = defineCollection({
-  loader: glob({ pattern: "**/-*.{md,mdx}", base: "src/content/pricing" }),
+const engagementsCollection = defineCollection({
+  loader: glob({ pattern: "**/-*.{md,mdx}", base: "src/content/engagements" }),
   schema: z.object({
     title: z.string(),
     description: z.string().optional(),
-    draft: z.boolean(),
-    plans: z
-      .array(
-        z.object({
-          title: z.string(),
-          subtitle: z.string().optional(),
-          price: z.number(),
-          type: z.string(),
-          recommended: z.boolean().optional(),
-          features: z.array(z.string()),
-          button: z.object({
-            label: z.string(),
-            link: z.string().default("/contact"),
-          }),
-        }),
-      )
-      .optional(),
-
-    call_to_action: z
-      .object({
+    intro: z.string(),
+    capacity_note: z.string(),
+    shapes: z.array(
+      z.object({
+        slug: z.string(),
         title: z.string(),
-        content: z.string(),
-        image: z.string(),
-        button: z
-          .object({
-            enable: z.boolean().default(true),
-            label: z.string(),
-            link: z.string().default("/contact"),
-          })
-          .optional(),
-      })
-      .optional(),
-  }),
-});
-
-// FAQ collection schema
-const faqCollection = defineCollection({
-  loader: glob({ pattern: "**/-*.{md,mdx}", base: "src/content/faq" }),
-  schema: z.object({
-    title: z.string(),
-    description: z.string(),
-    draft: z.boolean(),
+        premise: z.string(),
+        best_for: z.string(),
+        scope: z.array(z.string()),
+        duration: z.string(),
+        outcome: z.string(),
+        cta: z.object({
+          label: z.string().default("Book a call"),
+          link: z.string().default("/contact/"),
+        }),
+      }),
+    ),
     faqs: z.array(
       z.object({
-        title: z.string(),
+        question: z.string(),
         answer: z.string(),
       }),
     ),
   }),
 });
 
-// Blog collection schema
-const blogCollection = defineCollection({
-  loader: glob({ pattern: "**/*.{md,mdx}", base: "src/content/blog" }),
+const aboutCollection = defineCollection({
+  loader: glob({ pattern: "**/-*.{md,mdx}", base: "src/content/about" }),
   schema: z.object({
     title: z.string(),
-    meta_title: z.string().optional(),
     description: z.string().optional(),
-    date: z.date().optional(),
-    image: z.string().optional(),
-    authors: z.array(z.string()).default(["admin"]),
-    categories: z.array(z.string()).default(["others"]),
-    tags: z.array(z.string()).default(["others"]),
-    draft: z.boolean().optional(),
+    portrait: z.string(),
+    intro: z.string(),
+    credentials_strip: z.array(z.string()),
+    career_narrative: z.array(z.string()),
+    track_record: z.array(
+      z.object({
+        metric: z.string(),
+        role: z.string(),
+        employer_shape: z.string(),
+      }),
+    ),
+    how_i_work: z.array(z.string()),
+    writing_links: z
+      .array(
+        z.object({
+          label: z.string(),
+          url: z.string(),
+        }),
+      )
+      .default([]),
+    final_cta: z.object({
+      heading: z.string(),
+      button_label: z.string(),
+      button_link: z.string(),
+    }),
   }),
 });
 
-// Pages collection schema
+const contactCollection = defineCollection({
+  loader: glob({ pattern: "**/-*.{md,mdx}", base: "src/content/contact" }),
+  schema: z.object({
+    title: z.string(),
+    description: z.string().optional(),
+    heading: z.string(),
+    sub: z.string(),
+    cal_event_url: z.string(),
+    cal_link_label: z.string(),
+    form_heading: z.string(),
+    form_intro: z.string(),
+    email_line: z.string(),
+  }),
+});
+
 const pagesCollection = defineCollection({
+  loader: glob({ pattern: "**/*.{md,mdx}", base: "src/content/pages" }),
   schema: z.object({
     title: z.string(),
     meta_title: z.string().optional(),
     description: z.string().optional(),
-    image: z.string().optional(),
     draft: z.boolean().optional(),
   }),
 });
 
-// Export collections
 export const collections = {
   homepage: homepageCollection,
-  blog: blogCollection,
-  pages: pagesCollection,
+  engagements: engagementsCollection,
+  about: aboutCollection,
   contact: contactCollection,
-  pricing: pricingCollection,
-  faq: faqCollection,
+  pages: pagesCollection,
 };

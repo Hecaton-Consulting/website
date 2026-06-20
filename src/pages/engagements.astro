@@ -1,0 +1,43 @@
+---
+import Base from "@/layouts/Base.astro";
+import EngagementCard from "@/components/EngagementCard.astro";
+import FaqStrip from "@/components/FaqStrip.astro";
+import CtaBlock from "@/components/CtaBlock.astro";
+import MonoLabel from "@/components/MonoLabel.astro";
+import { getEntry } from "astro:content";
+
+const entry = await getEntry("engagements", "-index");
+if (!entry) throw new Error("engagements/-index.md content entry not found");
+
+const { title, description, intro, capacity_note, shapes, faqs } = entry.data;
+---
+
+<Base title={title} description={description}>
+  <section class="section pt-32 md:pt-40">
+    <div class="container">
+      <h1>Engagements</h1>
+      <p class="mt-6 max-w-2xl text-lg text-text">{intro}</p>
+      <div class="mt-10">
+        <MonoLabel label="capacity" />
+        <p class="mt-2 text-text-dark">{capacity_note}</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <div class="grid grid-cols-1 gap-8 md:grid-cols-2">
+        {shapes.map((shape) => <EngagementCard shape={shape} />)}
+      </div>
+    </div>
+  </section>
+
+  <FaqStrip faqs={faqs} />
+
+  <CtaBlock
+    heading="Not sure which shape fits?"
+    sub="Book a call and we'll work it out together."
+    button_label="Book a call"
+    button_link="/contact/"
+  />
+</Base>

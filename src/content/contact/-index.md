@@ -1,12 +1,11 @@
 ---
-title: "Contact Us"
-description: "meta description"
-draft: false
-info:
-  title: Why you should contact us!
-  description: Lorem ipsum dolor sit amet, consectetur adipisicing elit. Velit recusandae voluptates doloremque veniam temporibus porro culpa ipsa, nisi soluta minima saepe laboriosam debitis nesciunt.
-  contacts:
-    - "phone: +88 125 256 452"
-    - "Mail: [info@bigspring.com](mailto:info@bigspring.com)"
-    - "Address: 360 Main rd, Rio, Brazil"
+title: "Contact"
+description: "Book a 30-minute intro call with Jaime, or drop a message and I'll get back within one business day."
+heading: "Let's talk about your platform."
+sub: "30-minute intro call, no pitch deck. Bring the mess."
+cal_event_url: "https://cal.eu/hecaton/intro"
+cal_link_label: "Or pick a time: cal.eu/hecaton/intro"
+form_heading: "Prefer to send a message?"
+form_intro: "I'll get back to you within one business day."
+email_line: "Or email me directly: jaime@hecaton.tech"
 ---

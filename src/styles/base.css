@@ -3,7 +3,14 @@ html {
 }
 
 body {
-  @apply bg-body font-primary font-normal leading-relaxed text-text;
+  @apply bg-body font-secondary font-normal leading-relaxed text-text;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+::selection {
+  background: var(--color-primary);
+  color: var(--color-body);
 }
 
 h1,
@@ -12,17 +19,21 @@ h3,
 h4,
 h5,
 h6 {
-  @apply font-primary font-bold leading-tight text-text-dark;
+  @apply font-primary font-semibold leading-tight text-text-dark;
 }
 
 h1,
 .h1 {
-  @apply text-h1-sm md:text-h1;
+  font-size: clamp(3rem, 8vw, 6rem);
+  line-height: 0.95;
+  letter-spacing: -0.02em;
 }
 
 h2,
 .h2 {
-  @apply text-h2-sm md:text-h2;
+  font-size: clamp(2rem, 4vw, 3.25rem);
+  line-height: 1.1;
+  letter-spacing: -0.015em;
 }
 
 h3,
@@ -45,10 +56,41 @@ h6,
   @apply text-h6;
 }
 
+a {
+  @apply underline decoration-transparent underline-offset-4 transition-colors;
+}
+
+a:hover,
+a:focus-visible {
+  @apply decoration-[var(--color-primary)] text-text-dark;
+}
+
 b,
 strong {
-  @apply font-semibold;
+  @apply font-semibold text-text-dark;
 }
+
+code,
+pre,
+kbd,
+samp {
+  @apply font-mono;
+}
+
 code {
-  @apply after:border-none;
+  @apply rounded bg-light px-1.5 py-0.5 text-text-dark text-[0.9em];
+}
+
+*:focus-visible {
+  @apply outline-2 outline-offset-2 outline-[var(--color-primary)];
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
 }

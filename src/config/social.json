@@ -1,24 +1,14 @@
 {
   "main": [
     {
-      "name": "facebook",
-      "icon": "FaFacebook",
-      "link": "https://www.facebook.com/"
+      "name": "GitHub",
+      "icon": "github",
+      "link": "https://github.com/jbaldodiego"
     },
     {
-      "name": "x",
-      "icon": "FaXTwitter",
-      "link": "https://x.com/"
-    },
-    {
-      "name": "github",
-      "icon": "FaGithub",
-      "link": "https://www.github.com/"
-    },
-    {
-      "name": "linkedin",
-      "icon": "FaLinkedin",
-      "link": "https://www.linkedin.com/"
+      "name": "LinkedIn",
+      "icon": "linkedin",
+      "link": "https://www.linkedin.com/in/jbaldodiego/"
     }
   ]
 }

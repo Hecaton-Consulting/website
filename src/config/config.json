@@ -1,40 +1,49 @@
 {
   "site": {
-    "title": "Hecaton Light Astro",
-    "base_url": "https://bigspring-light-astro.vercel.app",
+    "title": "Hecaton",
+    "base_url": "https://hecaton.tech",
     "base_path": "/",
-    "trailing_slash": false,
+    "trailing_slash": true,
     "favicon": "/images/favicon.png",
     "logo": "/images/logo.png",
     "logo_width": "200",
     "logo_height": "38",
-    "logo_text": "Bigspring Light"
+    "logo_text": "Hecaton"
   },
-
   "settings": {
     "pagination": 4,
     "summary_length": 200
   },
-
   "nav_button": {
     "enable": true,
-    "label": "Get Started",
-    "link": "/contact"
+    "label": "Book a call",
+    "link": "/contact/"
   },
-
   "params": {
-    "contact_form_action": "#",
-    "footer_content": "Lorem ipsum dolor sit amet, consectetur elit. Consjat tristique eget amet, tempus eu at cttur.",
-    "copyright": "Designed and Developed By [Themefisher](https://themefisher.com/)"
+    "contact_form_action": "https://api.web3forms.com/submit",
+    "footer_content": "A fractional platform-engineering studio. You shipped fast. We'll make it last.",
+    "copyright": "© Hecaton"
   },
-
   "metadata": {
-    "meta_author": "Themefisher",
+    "meta_author": "Jaime Baldó",
     "meta_image": "/images/og-image.png",
-    "meta_description": "astro free blog theme"
+    "meta_description": "Fractional platform engineering for scaling SaaS. Audit, rescue, and ongoing platform work."
   },
   "google_tag_manager": {
     "enable": false,
-    "gtm_id": "GTM-XXXXXX"
+    "gtm_id": ""
+  },
+  "umami": {
+    "enable": true,
+    "website_id": "dfc7e7f2-0561-4c21-89f2-e07c89695078",
+    "script_src": "https://cloud.umami.is/script.js"
+  },
+  "web3forms": {
+    "access_key": "54cf0a12-8cb9-40d3-b89f-138fd8552286",
+    "redirect_url": "https://hecaton.tech/contact/thanks/"
+  },
+  "cal_com": {
+    "event_url": "https://cal.eu/hecaton/intro",
+    "embed_script": "https://app.cal.eu/embed/embed.js"
   }
 }

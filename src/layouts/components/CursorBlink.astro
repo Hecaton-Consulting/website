@@ -1,0 +1,9 @@
+---
+export interface Props {
+  class?: string;
+}
+
+const { class: className = "" } = Astro.props;
+---
+
+<span class={`cursor-blink ${className}`} aria-hidden="true">&nbsp;</span>

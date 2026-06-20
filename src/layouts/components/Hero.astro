@@ -1,0 +1,29 @@
+---
+import CursorBlink from "@/components/CursorBlink.astro";
+
+export interface Props {
+  tagline: string;
+  subhead: string;
+  primary: { label: string; link: string };
+  secondary: { label: string; link: string };
+}
+
+const { tagline, subhead, primary, secondary } = Astro.props;
+---
+
+<section class="section pt-32 md:pt-40">
+  <div class="container">
+    <h1 class="max-w-5xl">
+      {tagline}<CursorBlink />
+    </h1>
+    <p class="mt-8 max-w-2xl text-lg md:text-xl text-text">{subhead}</p>
+    <div class="mt-12 flex flex-wrap gap-4">
+      <a href={primary.link} class="btn btn-primary">
+        {primary.label} <span aria-hidden="true">→</span>
+      </a>
+      <a href={secondary.link} class="btn btn-outline">
+        {secondary.label}
+      </a>
+    </div>
+  </div>
+</section>
