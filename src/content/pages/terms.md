@@ -4,7 +4,11 @@ meta_title: "Terms — Hecaton"
 description: "Terms governing your use of the Hecaton website."
 ---
 
-This site is provided by Hecaton (the trading name of Jaime Baldó, based in Spain).
+This site is provided by Hecaton (the trading name of Jaime Baldó, an individual based in Spain). You can reach the operator at `jaime@hecaton.tech`.
+
+<!-- TODO (Spanish LSSI Art. 10): once registered as autónomo, add NIF and a fiscal/contact address here. A coworking or virtual-office address is sufficient — no need to publish a home address. -->
+
+_Last updated: 20 June 2026._
 
 ## Site content
 
@@ -21,6 +25,10 @@ The site is provided "as is". I don't warrant that every link works, every exter
 ## Copyright
 
 © Hecaton. Site design and copy are original; the code is based on the open-source Bigspring Light Astro template (MIT) with substantial rework.
+
+## Governing law
+
+These terms are governed by Spanish law. Any dispute relating to this site will be subject to the Spanish courts, without prejudice to any mandatory consumer-protection rights you may have under the law of your country of residence.
 
 ## Contact
 
