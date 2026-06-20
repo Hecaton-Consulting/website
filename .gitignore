@@ -22,3 +22,6 @@ yarn.lock
 
 # ignore .astro directory
 .astro
+
+# internal planning/spec docs — not shipped in the public repo
+docs/
