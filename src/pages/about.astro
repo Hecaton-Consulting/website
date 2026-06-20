@@ -3,10 +3,25 @@ import Base from "@/layouts/Base.astro";
 import TrackRecordItem from "@/components/TrackRecordItem.astro";
 import CtaBlock from "@/components/CtaBlock.astro";
 import MonoLabel from "@/components/MonoLabel.astro";
+import config from "@/config/config.json";
+import social from "@/config/social.json";
 import { getEntry } from "astro:content";
 
 const entry = await getEntry("about", "-index");
 if (!entry) throw new Error("about/-index.md content entry not found");
+
+const personSchema = {
+  "@context": "https://schema.org",
+  "@type": "Person",
+  "@id": `${config.site.base_url}/about/#jaime`,
+  name: "Jaime Baldó",
+  jobTitle: "Senior Platform Engineer",
+  description: entry.data.description,
+  url: `${config.site.base_url}/about/`,
+  worksFor: { "@id": `${config.site.base_url}/#organization` },
+  knowsLanguage: ["en", "es", "it"],
+  sameAs: social.main.map((s) => s.link),
+};
 
 const {
   title,
@@ -23,6 +38,11 @@ const {
 ---
 
 <Base title={title} description={description}>
+  <script
+    slot="head"
+    type="application/ld+json"
+    set:html={JSON.stringify(personSchema)}
+  />
   <section class="section pt-32 md:pt-40">
     <div class="container">
       <div class="grid grid-cols-1 gap-10 md:grid-cols-[1fr_2fr] md:gap-16 items-start">

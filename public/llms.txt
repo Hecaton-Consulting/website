@@ -1,0 +1,22 @@
+# Hecaton
+
+> Hecaton is a fractional platform-engineering studio, principal-led by Jaime Baldó. It helps scaling SaaS teams audit, rescue, and run their cloud platform through two productised engagements: a fixed-scope Platform Audit & Roadmap, and an ongoing Retainer.
+
+Hecaton operates remotely from Spain (CET/CEST) and serves teams worldwide, comfortable working async from US East to APAC. Focus areas: Amazon Web Services (AWS), Infrastructure-as-Code (Terraform), Kubernetes, CI/CD, observability, FinOps and cloud cost reduction, SOC 2 compliance, and incident/outage reduction. Engagements are principal-led — Jaime does the work directly, with no pretend team.
+
+## Pages
+
+- [Home](https://hecaton.tech/): Overview, selected outcomes from a decade of platform work, and engagement teasers.
+- [Engagements](https://hecaton.tech/engagements/): The two engagement shapes (Platform Audit & Roadmap, ongoing Retainer), capacity, and FAQs.
+- [About](https://hecaton.tech/about/): Jaime Baldó's background, track record, and ways of working.
+- [Contact](https://hecaton.tech/contact/): Book a 30-minute intro call or send a message.
+
+## Legal
+
+- [Privacy](https://hecaton.tech/privacy/): GDPR-aligned privacy policy (EU-hosted booking and analytics).
+- [Terms](https://hecaton.tech/terms/): Website terms.
+
+## Contact
+
+- Email: jaime@hecaton.tech
+- Booking: https://cal.eu/hecaton/intro
