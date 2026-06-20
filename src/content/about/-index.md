@@ -1,6 +1,6 @@
 ---
 title: "About Jaime"
-description: "Hecaton is run by Jaime Baldó, a Senior Platform Engineer with a over decade of cloud and infrastructure work across startups and global teams."
+description: "Hecaton is run by Jaime Baldó, a Senior Platform Engineer with over a decade of cloud and infrastructure work across startups and global teams."
 portrait: "/images/jaime-portrait.jpg"
 intro: "I'm Jaime. I run Hecaton because I kept meeting teams who shipped MVPs brilliantly and then drowned in their own infra. Hecaton is the studio I would have hired, five roles ago."
 credentials_strip:
@@ -23,7 +23,7 @@ track_record:
   - metric: "SOC 2 compliance"
     role: "Senior Platform Engineer"
     employer_shape: "several separate engagements"
-  - metric: "Observability rolled out across 80+ AWS accounts "
+  - metric: "Observability rolled out across 80+ AWS accounts"
     role: "Senior Platform Engineer"
     employer_shape: "EVS based scale-up"
   - metric: "40% CI/CD spend cut"

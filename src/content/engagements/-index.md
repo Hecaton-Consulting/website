@@ -15,7 +15,7 @@ shapes:
       - "Observability gap analysis"
       - "6-month prioritised roadmap document"
     duration: "3–4 weeks calendar, 40–60 hours of work"
-    outcome: "You leave with a written plan a better documented systems, and measurable quick wins in place."
+    outcome: "You leave with a written plan, better-documented systems, and measurable quick wins in place."
     cta:
       label: "Book a call"
       link: "/contact/"
@@ -39,6 +39,8 @@ shapes:
 faqs:
   - question: "Do you work alone?"
     answer: "Yes. Hecaton is principal-led. Jaime on the keyboard."
+  - question: "What happens if you're sick, on holiday, or oversubscribed?"
+    answer: "Continuity is built in, not bolted on. Everything I do is documented as I go — runbooks, infrastructure-as-code, and the reasoning behind decisions all live in your repos, not in my head. So your team is never blocked waiting on me, and anyone (a future hire, or another engineer) can pick up exactly where I left off. Retainers agree response expectations up front, and any planned time off is flagged well in advance."
   - question: "Can you work inside our VPC / with production access?"
     answer: "Yes, with the right controls. We establish least-privilege access, document it, and revoke it cleanly at end of engagement."
   - question: "What's your day rate?"

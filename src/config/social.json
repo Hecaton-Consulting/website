@@ -1,11 +1,6 @@
 {
   "main": [
     {
-      "name": "GitHub",
-      "icon": "github",
-      "link": "https://github.com/jbaldodiego"
-    },
-    {
       "name": "LinkedIn",
       "icon": "linkedin",
       "link": "https://www.linkedin.com/in/jaime-bald%C3%B3-diego/"
