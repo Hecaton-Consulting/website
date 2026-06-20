@@ -34,16 +34,16 @@
     "gtm_id": ""
   },
   "umami": {
-    "enable": false,
-    "website_id": "",
+    "enable": true,
+    "website_id": "dfc7e7f2-0561-4c21-89f2-e07c89695078",
     "script_src": "https://cloud.umami.is/script.js"
   },
   "web3forms": {
-    "access_key": "",
+    "access_key": "54cf0a12-8cb9-40d3-b89f-138fd8552286",
     "redirect_url": "https://hecaton.tech/contact/thanks/"
   },
   "cal_com": {
-    "event_url": "https://cal.com/hecaton/intro",
-    "embed_script": "https://app.cal.com/embed/embed.js"
+    "event_url": "https://cal.eu/hecaton/intro",
+    "embed_script": "https://app.cal.eu/embed/embed.js"
   }
 }

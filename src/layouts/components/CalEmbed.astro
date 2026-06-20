@@ -8,7 +8,12 @@ export interface Props {
 
 const { calLink = config.cal_com.event_url, minHeight = "700px" } = Astro.props;
 
-const calSlug = calLink.replace(/^https?:\/\/cal\.com\//, "");
+// Derive the slug and embed origin from the booking URL so the component works
+// on any Cal.com instance (global cal.com or the EU region cal.eu).
+const calUrl = new URL(calLink);
+const calSlug = calUrl.pathname.replace(/^\/+/, "");
+const calOrigin = `${calUrl.protocol}//app.${calUrl.host}`;
+const embedSrc = config.cal_com.embed_script || `${calOrigin}/embed/embed.js`;
 ---
 
 <div
@@ -19,7 +24,7 @@ const calSlug = calLink.replace(/^https?:\/\/cal\.com\//, "");
 >
 </div>
 
-<script is:inline define:vars={{ embedSrc: config.cal_com.embed_script, calSlug }}>
+<script is:inline define:vars={{ embedSrc, calSlug, calOrigin }}>
   (function (C, A, L) {
     let p = function (a, ar) {
       a.q.push(ar);
@@ -55,7 +60,7 @@ const calSlug = calLink.replace(/^https?:\/\/cal\.com\//, "");
       };
   })(window, embedSrc, "init");
 
-  Cal("init", "intro", { origin: "https://cal.com" });
+  Cal("init", "intro", { origin: calOrigin });
   Cal.ns.intro("inline", {
     elementOrSelector: "#cal-inline",
     calLink: calSlug,
