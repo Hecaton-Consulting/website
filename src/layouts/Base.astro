@@ -1,5 +1,6 @@
 ---
 import config from "@/config/config.json";
+import social from "@/config/social.json";
 import { plainify } from "@/lib/utils/textConverter";
 import Footer from "@/partials/Footer.astro";
 import Header from "@/partials/Header.astro";
@@ -28,6 +29,51 @@ const ogImage = `${config.site.base_url}${image ? image : config.metadata.meta_i
 const canonicalHref =
   canonical ??
   new URL(Astro.url.pathname, config.site.base_url).toString();
+
+const orgId = `${config.site.base_url}/#organization`;
+
+const organizationSchema = {
+  "@context": "https://schema.org",
+  "@type": "ProfessionalService",
+  "@id": orgId,
+  name: config.site.title,
+  url: config.site.base_url,
+  logo: `${config.site.base_url}/images/favicon.png`,
+  image: `${config.site.base_url}${config.metadata.meta_image}`,
+  description: config.metadata.meta_description,
+  email: "jaime@hecaton.tech",
+  founder: {
+    "@type": "Person",
+    name: "Jaime Baldó",
+    jobTitle: "Senior Platform Engineer",
+  },
+  areaServed: "Worldwide",
+  address: { "@type": "PostalAddress", addressCountry: "ES" },
+  knowsAbout: [
+    "Platform Engineering",
+    "DevOps",
+    "Site Reliability Engineering",
+    "Amazon Web Services",
+    "Infrastructure as Code",
+    "Terraform",
+    "Kubernetes",
+    "FinOps",
+    "Observability",
+    "SOC 2 compliance",
+  ],
+  sameAs: social.main.map((s) => s.link),
+};
+
+const websiteSchema = {
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  "@id": `${config.site.base_url}/#website`,
+  url: config.site.base_url,
+  name: config.site.title,
+  description: config.metadata.meta_description,
+  publisher: { "@id": orgId },
+  inLanguage: "en",
+};
 ---
 
 <!doctype html>
@@ -50,16 +96,31 @@ const canonicalHref =
     <meta name="description" content={pageDescription} />
     <meta name="author" content={config.metadata.meta_author} />
 
+    <meta property="og:site_name" content={config.site.title} />
+    <meta property="og:locale" content="en_US" />
     <meta property="og:title" content={pageTitle} />
     <meta property="og:description" content={pageDescription} />
     <meta property="og:type" content="website" />
     <meta property="og:url" content={canonicalHref} />
     <meta property="og:image" content={ogImage} />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content={pageTitle} />
 
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content={pageTitle} />
     <meta name="twitter:description" content={pageDescription} />
     <meta name="twitter:image" content={ogImage} />
+
+    <script
+      type="application/ld+json"
+      set:html={JSON.stringify(organizationSchema)}
+    />
+    <script
+      type="application/ld+json"
+      set:html={JSON.stringify(websiteSchema)}
+    />
+    <slot name="head" />
 
     {
       config.umami.enable && config.umami.website_id && (

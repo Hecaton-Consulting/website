@@ -1,4 +1,24 @@
 User-agent: *
 Allow: /
+Disallow: /api/
 
-Disallow: /api/*
+# AI / LLM crawlers — explicitly welcomed for discoverability
+User-agent: GPTBot
+Allow: /
+
+User-agent: OAI-SearchBot
+Allow: /
+
+User-agent: ChatGPT-User
+Allow: /
+
+User-agent: ClaudeBot
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+
+User-agent: Google-Extended
+Allow: /
+
+Sitemap: https://hecaton.tech/sitemap-index.xml
