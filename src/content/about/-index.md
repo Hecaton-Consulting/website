@@ -23,7 +23,7 @@ track_record:
   - metric: "SOC 2 compliance"
     role: "Senior Platform Engineer"
     employer_shape: "several separate engagements"
-  - metric: "Observability rolled out across 80+ AWS accounts"
+  - metric: "Observability rolled out across 70+ AWS accounts"
     role: "Senior Platform Engineer"
     employer_shape: "EVS based scale-up"
   - metric: "40% CI/CD spend cut"
