@@ -19,7 +19,7 @@ proof_strip:
     - metric: "SOC 2 readiness shipped"
       context: "compliance delivered across several engagements"
     - metric: "Org-wide observability"
-      context: "centralised across 80+ AWS accounts, as Senior Platform Engineer at an EVS scale-up"
+      context: "centralised across 70+ AWS accounts, as Senior Platform Engineer at an EVS scale-up"
     - metric: "40% lower CI/CD spend"
       context: "pipeline refactor at the same EVS scale-up"
 engagement_teasers:
