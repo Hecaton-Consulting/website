@@ -6,12 +6,12 @@ intro: "I'm Jaime. I run Hecaton because I kept meeting teams who shipped MVPs b
 credentials_strip:
   - "Senior Platform Engineer"
   - "10+ years"
-  - "C2 English"
+  - "C2 English (EF SET certified)"
   - "native Spanish"
   - "remote, based in Spain"
 career_narrative:
   - "I started in technical support, the unglamorous work of keeping an office running. That's where I learnt the habits that still show up in everything I build: document the system, automate the boring, own the outage."
-  - "I moved into DevOps at Findasense, then platform engineering at Eva Global and Amenitiz, a mix of mid-market SaaS, hospitality tech, and a global BPO. Terraform, multi-account AWS, SOC-2 compliance, observability rollouts, and cost cuts that actually stuck. Different stacks, same work: bring order to chaos."
+  - "I moved into Cloud infrastructure at Findasense, DevOps at Snippet and ClickDimensions, then platform engineering at Eva Global and Amenitiz — a mix of mid-market SaaS, hospitality tech, and a global BPO. Terraform, multi-account AWS, SOC-2 compliance, observability rollouts, and cost cuts that actually stuck. Different stacks, same work: bring order to chaos."
   - "I launched Hecaton because fractional work seems more necessary than ever. Part-time and principal-led."
 track_record:
   - metric: "52% AWS bill cut"

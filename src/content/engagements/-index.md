@@ -1,7 +1,7 @@
 ---
 title: "Engagements"
 description: "Two productised platform-engineering engagements: Platform Audit & Roadmap and Fractional Platform Engineer."
-intro: "Two productised engagements. They are shaped to match how platform work usually lands in scaling SaaS teams. Pick the one that fits, or book a call and we'll figure what you need together."
+intro: "Two productised engagements. They are shaped to match how platform work usually lands in scaling SaaS teams. Pick the one that fits, or book a call and we'll figure out what you need together."
 capacity_note: "Currently taking one new retainer client at a time."
 shapes:
   - slug: "platform/audit"
