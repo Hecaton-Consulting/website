@@ -40,7 +40,7 @@ about_teaser:
   portrait: "/images/jaime-portrait.jpg"
   credentials:
     - "Senior Platform Engineer"
-    - "C2 English"
+    - "C2 English (EF SET certified)"
     - "remote, based in Spain"
   principal_line: "Hecaton is principal led: you get Jaime on the keyboard, not a bench."
   cta_label: "More about Jaime"
