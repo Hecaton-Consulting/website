@@ -5,23 +5,32 @@ import MetricStrip from "@/components/MetricStrip.astro";
 import EngagementCard from "@/components/EngagementCard.astro";
 import CtaBlock from "@/components/CtaBlock.astro";
 import MonoLabel from "@/components/MonoLabel.astro";
+import FaqStrip from "@/components/FaqStrip.astro";
 import { getEntry } from "astro:content";
 
 const homepage = await getEntry("homepage", "-index");
 if (!homepage) throw new Error("homepage/-index.md content entry not found");
+const engagements = await getEntry("engagements", "-index");
+if (!engagements) throw new Error("engagements/-index.md content entry not found");
 
 const {
   banner,
+  triggers,
   proof_strip,
   engagement_teasers,
+  process,
+  faq_heading,
   about_teaser,
   final_cta,
 } = homepage.data;
+
+// Same source as the engagements page: one place to edit answers.
+const homeFaqs = engagements.data.faqs.slice(0, 4);
 ---
 
 <Base
-  meta_title="Hecaton — Fractional Platform Engineering for Scaling SaaS"
-  description="Fractional platform engineering for scaling SaaS. Audit, rescue, and ongoing platform work — principal-led by Jaime Baldó."
+  meta_title="Hecaton | Fractional Platform Engineering for Scaling SaaS"
+  description="Fractional platform engineering for scaling SaaS: a fixed-scope audit or an ongoing part-time retainer. AWS cost, reliability and SOC 2 readiness. Principal-led by Jaime Baldó."
 >
   <Hero
     tagline={banner.tagline}
@@ -29,6 +38,17 @@ const {
     primary={banner.primary_cta}
     secondary={banner.secondary_cta}
   />
+
+  <section class="section">
+    <div class="container">
+      <MonoLabel label={triggers.heading} />
+      <ul class="mt-6 grid grid-cols-1 gap-4 md:grid-cols-2">
+        {triggers.items.map((item) => (
+          <li class="pl-4 border-l border-border text-text">{item}</li>
+        ))}
+      </ul>
+    </div>
+  </section>
 
   <MetricStrip
     heading={proof_strip.heading}
@@ -50,6 +70,7 @@ const {
                 slug: shape.slug,
                 title: shape.title,
                 premise: shape.premise,
+                duration: shape.duration,
                 cta: { label: "Learn more", link: shape.link },
               }}
               compact
@@ -57,6 +78,21 @@ const {
           ))
         }
       </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <h2 class="mb-10">{process.heading}</h2>
+      <ol class="grid grid-cols-1 gap-8 md:grid-cols-3">
+        {process.steps.map((step, i) => (
+          <li>
+            <MonoLabel label={`0${i + 1}`} />
+            <h3 class="mt-3 text-xl font-primary font-semibold text-text-dark">{step.title}</h3>
+            <p class="mt-2 text-text">{step.body}</p>
+          </li>
+        ))}
+      </ol>
     </div>
   </section>
 
@@ -85,6 +121,8 @@ const {
       </div>
     </div>
   </section>
+
+  <FaqStrip heading={faq_heading} faqs={homeFaqs} />
 
   <CtaBlock
     heading={final_cta.heading}

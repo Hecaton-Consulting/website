@@ -15,7 +15,7 @@ const personSchema = {
   "@type": "Person",
   "@id": `${config.site.base_url}/about/#jaime`,
   name: "Jaime Baldó",
-  jobTitle: "Senior Platform Engineer",
+  jobTitle: "Staff Platform Engineer",
   description: entry.data.description,
   url: `${config.site.base_url}/about/`,
   worksFor: { "@id": `${config.site.base_url}/#organization` },
@@ -37,7 +37,7 @@ const {
 } = entry.data;
 ---
 
-<Base title={title} description={description}>
+<Base title={title} meta_title={entry.data.meta_title} description={description}>
   <script
     slot="head"
     type="application/ld+json"
@@ -80,7 +80,7 @@ const {
     <div class="container">
       <h2 class="mb-4">Track record</h2>
       <p class="mb-10 max-w-2xl text-text">
-        Outcomes from a decade of platform work across employed roles — anonymised by employer shape, named by my role at the time.
+        Results from a decade of platform work, all from employed roles. Employers are described by type, not named. Roles are as I held them.
       </p>
       <ul class="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3">
         {

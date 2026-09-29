@@ -5,6 +5,7 @@ import FaqStrip from "@/components/FaqStrip.astro";
 import CtaBlock from "@/components/CtaBlock.astro";
 import MonoLabel from "@/components/MonoLabel.astro";
 import { plainify } from "@/lib/utils/textConverter";
+import config from "@/config/config.json";
 import { getEntry } from "astro:content";
 
 const entry = await getEntry("engagements", "-index");
@@ -21,13 +22,28 @@ const faqSchema = {
     acceptedAnswer: { "@type": "Answer", text: plainify(f.answer) },
   })),
 };
+
+const serviceSchemas = shapes.map((s) => ({
+  "@context": "https://schema.org",
+  "@type": "Service",
+  name: s.title,
+  description: plainify(`${s.premise} ${s.best_for}`),
+  provider: { "@id": `${config.site.base_url}/#organization` },
+  areaServed: "Worldwide",
+  serviceType: s.title,
+}));
 ---
 
-<Base title={title} description={description}>
+<Base title={title} meta_title={entry.data.meta_title} description={description}>
   <script
     slot="head"
     type="application/ld+json"
     set:html={JSON.stringify(faqSchema)}
+  />
+  <script
+    slot="head"
+    type="application/ld+json"
+    set:html={JSON.stringify(serviceSchemas)}
   />
   <section class="section pt-32 md:pt-40">
     <div class="container">
@@ -51,8 +67,8 @@ const faqSchema = {
   <FaqStrip faqs={faqs} />
 
   <CtaBlock
-    heading="Not sure which shape fits?"
-    sub="Book a call and we'll work it out together."
+    heading="Not sure which one you need?"
+    sub="Book a call and we'll tell you. Start with the audit if you don't know where to begin."
     button_label="Book a call"
     button_link="/contact/"
   />

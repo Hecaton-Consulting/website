@@ -8,7 +8,7 @@ export interface Props {
 const { class: className = "" } = Astro.props;
 ---
 
-<a href="/" aria-label={`${config.site.title} — home`} class={`font-primary font-semibold text-text-dark text-xl tracking-tight ${className}`}>
+<a href="/" aria-label={`${config.site.title} home`} class={`font-primary font-semibold text-text-dark text-xl tracking-tight ${className}`}>
   <span>{config.site.logo_text}</span>
   <span class="text-primary" aria-hidden="true">.</span>
 </a>

@@ -12,6 +12,8 @@ const {
   description,
   heading,
   sub,
+  call_heading,
+  call_steps,
   cal_event_url,
   cal_link_label,
   form_heading,
@@ -20,11 +22,15 @@ const {
 } = entry.data;
 ---
 
-<Base title={title} description={description}>
+<Base title={title} meta_title={entry.data.meta_title} description={description}>
   <section class="section pt-32 md:pt-40">
     <div class="container">
       <h1>{heading}</h1>
       <p class="mt-6 max-w-2xl text-lg text-text">{sub}</p>
+      <h2 class="mt-10 mb-4 text-xl">{call_heading}</h2>
+      <ol class="flex max-w-2xl flex-col gap-3 text-text list-decimal pl-5">
+        {call_steps.map((step) => <li>{step}</li>)}
+      </ol>
     </div>
   </section>
 
