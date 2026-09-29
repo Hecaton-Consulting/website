@@ -1,6 +1,6 @@
 ---
 title: "Terms"
-meta_title: "Terms — Hecaton"
+meta_title: "Terms | Hecaton"
 description: "Terms governing your use of the Hecaton website."
 ---
 

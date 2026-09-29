@@ -30,6 +30,7 @@ const { shape, compact = false } = Astro.props;
       {shape.title}
     </h3>
     <p class="text-text">{shape.premise}</p>
+    {compact && shape.duration && <p class="mono-label">{shape.duration}</p>}
   </div>
 
   {

@@ -1,6 +1,6 @@
 ---
 title: "Privacy"
-meta_title: "Privacy policy — Hecaton"
+meta_title: "Privacy policy | Hecaton"
 description: "How Hecaton handles the small amount of data this site collects."
 ---
 

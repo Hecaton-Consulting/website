@@ -16,6 +16,10 @@ const homepageCollection = defineCollection({
         link: z.string(),
       }),
     }),
+    triggers: z.object({
+      heading: z.string(),
+      items: z.array(z.string()),
+    }),
     proof_strip: z.object({
       heading: z.string(),
       disclaimer: z.string(),
@@ -34,10 +38,16 @@ const homepageCollection = defineCollection({
           slug: z.string(),
           title: z.string(),
           premise: z.string(),
+          duration: z.string().optional(),
           link: z.string().default("/engagements/"),
         }),
       ),
     }),
+    process: z.object({
+      heading: z.string(),
+      steps: z.array(z.object({ title: z.string(), body: z.string() })),
+    }),
+    faq_heading: z.string(),
     about_teaser: z.object({
       heading: z.string(),
       intro: z.string(),
@@ -60,6 +70,7 @@ const engagementsCollection = defineCollection({
   loader: glob({ pattern: "**/-*.{md,mdx}", base: "src/content/engagements" }),
   schema: z.object({
     title: z.string(),
+    meta_title: z.string().optional(),
     description: z.string().optional(),
     intro: z.string(),
     capacity_note: z.string(),
@@ -91,6 +102,7 @@ const aboutCollection = defineCollection({
   loader: glob({ pattern: "**/-*.{md,mdx}", base: "src/content/about" }),
   schema: z.object({
     title: z.string(),
+    meta_title: z.string().optional(),
     description: z.string().optional(),
     portrait: z.string(),
     intro: z.string(),
@@ -124,9 +136,12 @@ const contactCollection = defineCollection({
   loader: glob({ pattern: "**/-*.{md,mdx}", base: "src/content/contact" }),
   schema: z.object({
     title: z.string(),
+    meta_title: z.string().optional(),
     description: z.string().optional(),
     heading: z.string(),
     sub: z.string(),
+    call_heading: z.string(),
+    call_steps: z.array(z.string()),
     cal_event_url: z.string(),
     cal_link_label: z.string(),
     form_heading: z.string(),

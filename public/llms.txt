@@ -1,15 +1,17 @@
 # Hecaton
 
-> Hecaton is a fractional platform-engineering studio, principal-led by Jaime Baldó. It helps scaling SaaS teams audit, rescue, and run their cloud platform through two productised engagements: a fixed-scope Platform Audit & Roadmap, and an ongoing Retainer.
+> Hecaton is a fractional platform-engineering practice, principal-led by Jaime Baldó. It helps scaling SaaS teams with two engagements: a fixed-scope Platform Audit & Roadmap, and an ongoing Fractional Platform Engineer retainer (10–20 hours a week).
 
-Hecaton operates remotely from Spain (CET/CEST) and serves teams worldwide, comfortable working async from US East to APAC. Focus areas: Amazon Web Services (AWS), Infrastructure-as-Code (Terraform), Kubernetes, CI/CD, observability, FinOps and cloud cost reduction, SOC 2 compliance, and incident/outage reduction. Engagements are principal-led — Jaime does the work directly, with no pretend team.
+Hecaton works remotely from Spain (CET/CEST) and serves teams worldwide, comfortable working async from US East to APAC. Focus areas: Amazon Web Services (AWS), Infrastructure-as-Code (Terraform), CI/CD, observability, FinOps and cloud cost reduction, and SOC 2 readiness. Jaime does the work himself; there is no larger team yet. Hecaton takes one new retainer client at a time.
+
+Past results (from Jaime's employed roles, not Hecaton engagements): 52% AWS bill reduction, 95% fewer outages in 3 months, SOC 2 readiness at several companies, observability across 70+ AWS accounts, 40% lower CI/CD spend.
 
 ## Pages
 
-- [Home](https://hecaton.tech/): Overview, selected outcomes from a decade of platform work, and engagement teasers.
-- [Engagements](https://hecaton.tech/engagements/): The two engagement shapes (Platform Audit & Roadmap, ongoing Retainer), capacity, and FAQs.
+- [Home](https://hecaton.tech/): Overview, past results, how an engagement starts, and common questions.
+- [Engagements](https://hecaton.tech/engagements/): Platform Audit & Roadmap and Fractional Platform Engineer, capacity, and FAQs.
 - [About](https://hecaton.tech/about/): Jaime Baldó's background, track record, and ways of working.
-- [Contact](https://hecaton.tech/contact/): Book a 30-minute intro call or send a message.
+- [Contact](https://hecaton.tech/contact/): Book a 30-minute call or send a message.
 
 ## Legal
 
